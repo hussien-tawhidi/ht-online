@@ -88,7 +88,7 @@ export default function Blog() {
                 </div>
                 <Link
                   href={`/blog/${blog.id}`}
-                  className='mt-4 inline-block text-primary hover:underline font-medium text-sm'>
+                  className='mt-4 inline-block hover:underline font-medium text-sm'>
                   مطالعه مقاله →
                 </Link>
               </div>

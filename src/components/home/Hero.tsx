@@ -1,8 +1,18 @@
-import Image from "next/image";
+"use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
 export default function Hero() {
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        delay: 0.15,
+        duration: 0.7,
+        ease: "easeOut",
+      }}
+      viewport={{ once: true, amount: 0.3 }}>
       <Image
         src={"/home/hero-banner.jpg"}
         alt='home banner'
@@ -10,6 +20,6 @@ export default function Hero() {
         height={500}
         className='object-cover w-full'
       />
-    </div>
+    </motion.div>
   );
 }

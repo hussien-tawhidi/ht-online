@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { header } from "../data";
-import { CiSearch, CiShoppingCart } from "react-icons/ci";
+import { CiSearch, CiShoppingCart, CiUser } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
@@ -122,27 +122,37 @@ export default function DesktopMenu() {
         ))}
 
         {/* Search Icon */}
-        <motion.li
-          onClick={() => setSearch(!search)}
-          className='text-xl cursor-pointer transition-all hover:text-tusi'
-          whileHover={{ scale: 1.2 }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ ...spring, duration: 0.5, delay: 0.4 }}>
-          <CiSearch />
-        </motion.li>
+        <div className='flex items-center gap-7'>
+          <motion.li
+            onClick={() => setSearch(!search)}
+            className='text-xl font-thin cursor-pointer transition-all hover:text-tusi'
+            whileHover={{ scale: 1.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
+            <CiSearch />
+          </motion.li>
 
-        <Search search={search} />
+          <Search search={search} />
 
-        {/* Cart Icon */}
-        <motion.li
-          className='text-xl font-thin cursor-pointer transition-all hover:text-tusi'
-          whileHover={{ scale: 1.2 }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
-          <CiShoppingCart />
-        </motion.li>
+          {/* Cart Icon */}
+          <motion.li
+            className='text-xl font-thin cursor-pointer transition-all hover:text-tusi'
+            whileHover={{ scale: 1.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
+            <CiShoppingCart />
+          </motion.li>
+          <motion.li
+            className='text-xl font-thin cursor-pointer transition-all hover:text-tusi'
+            whileHover={{ scale: 1.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
+            <CiUser />
+          </motion.li>
+        </div>
       </ul>
     </motion.div>
   );

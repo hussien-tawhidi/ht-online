@@ -35,7 +35,7 @@ export default function MobileMenuDropDown({
   return (
     <AnimatePresence>
       {open && (
-        <div className='fixed top-[7vh] right-0 backdrop-blur-[2px] w-full h-full overflow-y-auto z-30 '>
+        <div className='fixed top-[7vh] right-0 backdrop-blur-[2px] w-full h-screen overflow-y-auto z-30 '>
           <motion.ul
             key='mobile-menu'
             className='flex flex-col items-start sm:w-[70%] w-full pr-5 pt-10 sm:gap-10 gap-7 py-4 bg-lighter min-h-screen'
