@@ -19,10 +19,10 @@ const FlashDeals = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 600,
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay: true,
+    speed: 600,
     autoplaySpeed: 2000,
     rtl: true,
     responsive: [
