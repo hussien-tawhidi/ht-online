@@ -1,5 +1,6 @@
 import { header } from "@/components/header/data";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function Page({ params }: any) {
   const param = await params;
   const cate = header.find((item) => item.href === `/${param.categories}`);
