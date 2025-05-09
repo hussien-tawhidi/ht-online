@@ -15,7 +15,7 @@ export const cate = [
   { image: "/menu/categories/glasses.png", title: "عینک", link: "/glasses" },
   { image: "/menu/categories/shoes.png", title: "کفش", link: "/shoes" },
   { image: "/menu/categories/watch.png", title: "ساعت", link: "/watch" },
-  { image: "/menu/categories/clothes.png", title: "ساعت", link: "/clothes" },
+  { image: "/menu/categories/clothes.png", title: "لباس", link: "/clothes" },
 ];
 
 export const products = [

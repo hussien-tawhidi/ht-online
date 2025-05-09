@@ -12,7 +12,7 @@ const RecommendedProducts = () => {
         showAllLink='/recommended'
         specail
       />
-      <div className='grid gap-2 md:grid-cols-2  overflow-hidden'>
+      <div className='grid gap-2 md:grid-cols-2 mt-10  overflow-hidden'>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

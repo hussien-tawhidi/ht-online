@@ -9,6 +9,7 @@ export const header = [
     id: 2,
     title: "کیف",
     href: "/bags",
+    category: "کیف",
     image: "/menu/bag-banner.jpg",
     submenu: [
       { id: 1, title: "کیف دوشی", href: "/bags/shoulder" },
@@ -26,6 +27,7 @@ export const header = [
   {
     id: 3,
     title: "اکسسوری",
+    category: "اکسسوری",
     href: "/accessories",
     image: "/menu/accessories-banner.jpg",
     submenu: [
@@ -45,6 +47,7 @@ export const header = [
     id: 4,
     title: "عینک",
     href: "/glasses",
+    category: "عینک",
     image: "/menu/glasses-banner.jpg",
     submenu: [
       { id: 1, title: "عینک آفتابی", href: "/glasses/sunglasses" },
@@ -60,6 +63,7 @@ export const header = [
     id: 5,
     title: "کفش",
     href: "/shoes",
+    category: "کفش",
     image: "/menu/shoes-banner.jpg",
     submenu: [
       { id: 1, title: "کفش اسپرت", href: "/shoes/sport" },
@@ -76,6 +80,7 @@ export const header = [
     id: 6,
     title: "ساعت",
     href: "/watches",
+    category: "ساعت",
     image: "/menu/watch-banner.jpg",
     submenu: [
       { id: 1, title: "ساعت مچی مردانه", href: "/watches/men" },
@@ -86,22 +91,7 @@ export const header = [
       { id: 6, title: "ساعت ورزشی", href: "/watches/sport" },
     ],
   },
-  {
-    id: 7,
-    title: "پوشاک",
-    href: "/clothing",
-    image: "/menu/cloth-banner.jpg",
-    submenu: [
-      { id: 1, title: "تی‌شرت", href: "/clothing/tshirt" },
-      { id: 2, title: "شلوار", href: "/clothing/pants" },
-      { id: 3, title: "کت و کاپشن", href: "/clothing/jackets" },
-      { id: 4, title: "پیراهن", href: "/clothing/shirts" },
-      { id: 5, title: "کفش و صندل", href: "/clothing/shoes" },
-      { id: 6, title: "لباس خواب", href: "/clothing/nightwear" },
-      { id: 7, title: "لباس زیر", href: "/clothing/underwear" },
-      { id: 8, title: "کیف و کوله پشتی", href: "/clothing/bags" },
-    ],
-  },
+
   {
     id: 8,
     title: "کد مرسوله",

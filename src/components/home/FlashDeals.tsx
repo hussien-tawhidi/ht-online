@@ -22,6 +22,8 @@ const FlashDeals = () => {
     speed: 600,
     slidesToShow: 6,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
     rtl: true,
     responsive: [
       { breakpoint: 1280, settings: { slidesToShow: 3 } },
@@ -60,9 +62,9 @@ const FlashDeals = () => {
   }, []);
 
   return (
-    <section className='py-10 mt-20 text-right  w-full overflow-hidden'>
+    <section className='py-10 md:mt-20 mt-10 text-right  w-full overflow-hidden'>
       <div className='w-[90%] mx-auto'>
-        <div className='mb-6 flex justify-between items-center'>
+        <div className='mb-6 flex justify-between sm:items-center sm:gap-1 gap-2.5 sm:flex-row flex-col'>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

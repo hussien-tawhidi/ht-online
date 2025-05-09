@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import Search from "../search/Search";
+import Link from "next/link";
 
 const spring = {
   type: "spring",
@@ -48,9 +49,6 @@ export default function DesktopMenu() {
           <motion.li
             key={item.id}
             className='relaive cursor-pointer'
-            onClick={() => {
-              if (!item.submenu?.length) router.push("/");
-            }}
             onMouseEnter={() => setHoveredItem(item.id)}
             onMouseLeave={() => setHoveredItem(null)}
             initial={{ opacity: 0 }}
@@ -61,7 +59,11 @@ export default function DesktopMenu() {
               duration: 0.5,
             }}>
             <span
-              onClick={() => setHoveredItem(null)}
+              onClick={() => {
+                setHoveredItem(null);
+                if (item.href) router.push(item.href);
+              }}
+              // onClick={() => setHoveredItem(null)}
               className={`${
                 hoveredItem === item.id ? "opacity-100" : "opacity-70"
               } hover:opacity-100 py-10 px-2 font-thin transition-all hover:text-tusi`}>
@@ -80,22 +82,26 @@ export default function DesktopMenu() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  onClick={() => setHoveredItem(null)}
+                  // onClick={() => setHoveredItem(null)}
                   className='absolute top-12 right-0 left-0 mt-2 w-full h-screen mx-auto z-30 backdrop-blur-[2px] overflow-hidden'>
                   {/* Submenu List */}
                   <div className='flex items-center xl:px-64 lg:px-32 md:px-16 w-full justify-between bg-lighter py-10 gap-10'>
                     <motion.ul className='rounded py-2 grid grid-cols-2 gap-4'>
                       {item.submenu.map((sub) => (
-                        <motion.li
+                        <Link
                           key={sub.id}
-                          initial={{ opacity: 0, y: -5 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -5 }}
-                          transition={{ ...spring, duration: 0.2 }}
-                          className='px-4 py-2 font-thin transition-all hover:text-tusi duration-300 text-sm text-right cursor-pointer hover:bg-gray-100'
-                          onClick={() => router.push(sub.href)}>
-                          <span>{sub.title}</span>
-                        </motion.li>
+                          href={sub.href}
+                          onClick={() => setHoveredItem(null)}>
+                          <motion.li
+                            key={sub.id}
+                            initial={{ opacity: 0, y: -5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -5 }}
+                            transition={{ ...spring, duration: 0.2 }}
+                            className='px-4 py-2 font-thin transition-all hover:text-tusi duration-300 text-sm text-right cursor-pointer hover:bg-gray-100'>
+                            {sub.title}
+                          </motion.li>
+                        </Link>
                       ))}
                     </motion.ul>
 

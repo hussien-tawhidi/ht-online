@@ -10,7 +10,7 @@ export default function Categories() {
       <p className='h-1 md:text-3xl text-xl font-extrabold text-tusi mb-3 opacity-80'>
         کتگوری های محبوب
       </p>
-      <div className='w-[95%] relative mt-10 grid sm:grid-cols-3 grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6'>
+      <div className='w-[95%] relative md:mt-10 mt-3 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
         {cate.map((item, index) => (
           <motion.div
             key={index}
@@ -30,7 +30,7 @@ export default function Categories() {
               alt={`عکس برای ${item.title}`}
               width={160}
               height={160}
-              className='object-cover w-32 h-32 mx-auto rounded-full mb-4 transition duration-300 group-hover:scale-105'
+              className='object-cover  mx-auto rounded-full mb-4 transition duration-300 group-hover:scale-105'
             />
             <h2 className='text-base font-medium text-tusi group-hover:text-darker text-center transition'>
               {item.title}

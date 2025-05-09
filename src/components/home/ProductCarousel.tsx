@@ -94,14 +94,14 @@ const ProductCarousel = ({
   isNew = false,
 }: Props) => {
   return (
-    <section className='text-right px-4 py-12 overflow-hidden'>
+    <section className='text-right md:px-4 md:py-12 overflow-hidden'>
       <div className='flex items-center justify-between mb-6'>
         <motion.h2
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className='text-xl md:text-2xl font-bold text-tusi'>
+          className='md:text-2xl font-bold text-tusi'>
           {title}
         </motion.h2>
         {showAllLink && (
@@ -112,7 +112,7 @@ const ProductCarousel = ({
             viewport={{ once: true }}>
             <Link
               href={showAllLink}
-              className='text-sm text-tusi hover:underline transition'>
+              className='sm:text-sm text-[10px] text-tusi hover:underline transition'>
               مشاهده همه
             </Link>
           </motion.div>
@@ -133,7 +133,7 @@ const ProductCarousel = ({
               }}
               viewport={{ once: true, amount: 0.3 }}
               className='px-2'>
-              <div className='bg-white p-4 rounded-2xl hover:shadow-md transition relative'>
+              <div className='bg-white sm:p-4 rounded-2xl hover:shadow-md transition relative'>
                 {specail && (
                   <span className='absolute flex items-center gap-1 top-2 left-2 bg-tusi text-lighter text-xs px-2 py-1 rounded-full z-10'>
                     پیشنهاد ویژه
@@ -141,9 +141,9 @@ const ProductCarousel = ({
                   </span>
                 )}
                 {isNew && (
-                  <span className='absolute flex items-center gap-1 top-2 left-2 bg-tusi text-lighter text-xs px-2 py-1 rounded-full z-10'>
+                  <span className='absolute flex items-center gap-1 top-2 left-2 bg-tusi text-lighter text-xs px-2 sm:py-1  rounded-full z-10'>
                     جدید
-                    <LiaGrinStars />
+                    <LiaGrinStars className='sm:flex hidden' />
                   </span>
                 )}
 
@@ -153,18 +153,18 @@ const ProductCarousel = ({
                   width={300}
                   height={200}
                   className='rounded-xl object-cover w-full'
-                  sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw'
+                  // sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw'
                 />
 
-                <h3 className='text-sm text-tusi mt-3 font-medium line-clamp-1'>
+                <h3 className='text-sm text-tusi sm:mt-3 font-medium line-clamp-1'>
                   {product.title}
                 </h3>
-                <p className='text-xs text-gray-500 mt-1 text-tusi'>
+                <p className='sm:text-sm text-[9px] sm:mt-1 text-tusi'>
                   {product.category}
                 </p>
 
                 <div className='flex items-center justify-between mt-3'>
-                  <p className=' font-semibold'>
+                  <p className='sm:font-semibold sm:text-[14px] text-sm'>
                     {toPersianDigits(product.price).replace(
                       /\B(?=(\d{3})+(?!\d))/g,
                       "٬"
