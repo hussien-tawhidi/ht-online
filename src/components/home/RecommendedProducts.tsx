@@ -1,14 +1,16 @@
 "use client";
 import Image from "next/image";
-import { products } from "./data"; // Replace with your recommended list
 import ProductCarousel from "./ProductCarousel";
 import { motion } from "framer-motion";
+import { sampleProducts } from "@/products-samples";
 const RecommendedProducts = () => {
+  const recomended = sampleProducts.filter((item) => item.isFeatured === false);
+
   return (
     <div className='border border-tusi/30 w-[90%] mx-auto p-5 my-10 rounded-xl'>
       <ProductCarousel
         title='پیشنهادات برای شما'
-        products={products}
+        products={recomended}
         showAllLink='/recommended'
         specail
       />

@@ -4,11 +4,12 @@ import Image from "next/image";
 import Slider from "react-slick";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { PiShoppingBagThin } from "react-icons/pi";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { products } from "./data";
 import { CiClock1 } from "react-icons/ci";
+import { sampleProducts } from "@/products-samples";
+import AddToCart from "../addToCart";
 
 // Convert English digits to Persian
 const toPersianDigits = (num: number | string) => {
@@ -60,6 +61,9 @@ const FlashDeals = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+  const flashDiscount = sampleProducts.filter(
+    (item) => item.category === "اکسسوری" || item.category === "ساعت"
+  );
 
   return (
     <section className='py-10 md:mt-20 mt-10 text-right  w-full overflow-hidden'>
@@ -94,9 +98,9 @@ const FlashDeals = () => {
         </div>
 
         <Slider {...settings}>
-          {products.map((product, index) => (
+          {flashDiscount.map((product, index) => (
             <motion.div
-              key={product._id}
+              key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
@@ -106,45 +110,44 @@ const FlashDeals = () => {
               }}
               viewport={{ once: true, amount: 0.3 }}
               whileHover={{ scale: 1.03 }}>
-              <div className='rounded-xl mx-3 relative overflow-hidden group'>
+              <div className='rounded-xl h-fit mx-3 relative overflow-hidden group'>
                 <span className='absolute top-2 right-2 bg-tusi text-lighter text-xs px-2 py-1 rounded'>
-                  ٪
-                  {toPersianDigits(
-                    Math.round(
-                      ((product.oldPrice - product.price) / product.oldPrice) *
-                        100
-                    )
-                  )}{" "}
+                  ٪{product.discount ? product.discount : "10"}
                   تخفیف
                 </span>
 
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  width={300}
-                  height={300}
-                  className='rounded-xl w-full h-auto object-cover'
-                />
+                {product.images.map((image, index) => (
+                  <Image
+                    key={index}
+                    src={image.url}
+                    alt={product.name}
+                    width={300}
+                    height={300}
+                    className='rounded-xl w-full h-full object-cover'
+                  />
+                ))}
 
-                <h3 className='text-tusi font-semibold mt-3'>
-                  {product.title}
+                <h3 className='text-tusi font-semibold sm:text-sm text-xs whitespace-nowrap mt-3'>
+                  {product.name}
                 </h3>
-                <p className='text-xs text-tusi mt-1'>{product.category}</p>
+                <p className='sm:text-xs text-[9px] text-tusi mt-1'>
+                  {product.category}
+                </p>
 
-                <div className='flex items-center gap-2 mt-2'>
-                  <span className='text-tusi font-bold'>
+                <div className='flex  justify-betweenitems-center gap-2 mt-2'>
+                  <span className='text-tusi text-sm font-bold'>
                     {hasMounted
                       ? `${toPersianDigits(
                           product.price.toLocaleString()
                         )} تومان`
                       : `${product.price} تومان`}
                   </span>
-                  <span className='line-through text-sm text-tusi/50'>
+                  <span className='line-through text-[10px] text-tusi/50'>
                     {hasMounted
                       ? `${toPersianDigits(
-                          product.oldPrice.toLocaleString()
+                          product.price.toLocaleString()
                         )} تومان`
-                      : `${product.oldPrice} تومان`}
+                      : `${product.price} تومان`}
                   </span>
                 </div>
                 <div className='flex items-center justify-between w-full'>
@@ -154,10 +157,7 @@ const FlashDeals = () => {
                       <CiClock1 />
                     </div>
                   )}
-
-                  <button className='mt-4 flex items-center justify-center hover:text-darker cursor-pointer text-tusi text-sm py-2 rounded transition'>
-                    <PiShoppingBagThin className='text-lg' />
-                  </button>
+                  <AddToCart />
                 </div>
               </div>
             </motion.div>

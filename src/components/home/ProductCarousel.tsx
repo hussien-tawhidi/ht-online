@@ -9,19 +9,12 @@ import { LiaGrinStars } from "react-icons/lia";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-interface Product {
-  _id: string;
-  title: string;
-  image: string;
-  category: string;
-  price: number;
-}
+import { ProductTypes } from "../../../types/product.types";
 
 interface Props {
   specail?: boolean;
   title: string;
-  products: Product[];
+  products: ProductTypes[];
   showAllLink?: string;
   isNew?: boolean;
 }
@@ -123,7 +116,7 @@ const ProductCarousel = ({
         <Slider {...settings}>
           {products.map((product, i) => (
             <motion.div
-              key={product._id}
+              key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
@@ -147,17 +140,20 @@ const ProductCarousel = ({
                   </span>
                 )}
 
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  width={300}
-                  height={200}
-                  className='rounded-xl object-cover w-full'
-                  // sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw'
-                />
+                {product.images.map((item, i) => (
+                  <Image
+                    key={i}
+                    src={item.url}
+                    alt={product.name}
+                    width={300}
+                    height={200}
+                    className='rounded-xl object-cover w-full'
+                    // sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw'
+                  />
+                ))}
 
                 <h3 className='text-sm text-tusi sm:mt-3 font-medium line-clamp-1'>
-                  {product.title}
+                  {product.name}
                 </h3>
                 <p className='sm:text-sm text-[9px] sm:mt-1 text-tusi'>
                   {product.category}

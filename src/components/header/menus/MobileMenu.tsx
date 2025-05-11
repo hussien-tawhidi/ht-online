@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CiSearch, CiShoppingCart } from "react-icons/ci";
+import { CiSearch, CiShoppingCart, CiUser } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -31,7 +31,7 @@ export default function MobileMenu() {
         <ul className='flex items-center justify-between w-full lg:gap-14 md:gap-8'>
           {/* Logo */}
           <motion.li
-            className='cursor-pointer'
+            className='flex items-center gap-2 text-2xl'
             onClick={() => router.push("/")}
             whileHover={{ scale: 1.1 }}
             initial={{ opacity: 0 }}
@@ -44,14 +44,7 @@ export default function MobileMenu() {
               alt='logo ht-online'
               src={"/logo.png"}
             />
-          </motion.li>
 
-          {/* Animated Mobile Menu Items */}
-          <MobileMenuDropDown open={open} setOpen={setOpen} />
-          {/* search */}
-          <Search search={search} />
-          {/* Right Icons */}
-          <li className='flex items-center gap-5 text-2xl relative z-20'>
             {/* Search Icon */}
             <motion.span
               onClick={() => setSearch(!search)}
@@ -61,6 +54,22 @@ export default function MobileMenu() {
               animate={{ opacity: 1 }}
               transition={{ ...spring, duration: 0.5, delay: 0.4 }}>
               <CiSearch />
+            </motion.span>
+          </motion.li>
+
+          {/* Animated Mobile Menu Items */}
+          <MobileMenuDropDown open={open} setOpen={setOpen} />
+          {/* search */}
+          <Search search={search} />
+          {/* Right Icons */}
+          <li className='flex items-center gap-5 text-2xl relative z-20'>
+            <motion.span
+              className='text-xl font-thin cursor-pointer transition-all hover:text-tusi'
+              whileHover={{ scale: 1.2 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
+              <CiUser />
             </motion.span>
 
             {/* Cart Icon */}

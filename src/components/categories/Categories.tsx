@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { header } from "../header/data";
 import { sampleProducts } from "@/products-samples";
-import { motion } from "framer-motion";
 import CategoryToolbar from "./CategoryToolbar";
 import AddToCart from "../addToCart";
+
 export default function Categories({ category }: { category: string }) {
   const cate = header.find((item) => item.href === `/${category}`);
 
@@ -40,23 +40,14 @@ export default function Categories({ category }: { category: string }) {
   };
   return (
     <div className='p-4'>
-      <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.15,
-          duration: 0.5,
-          ease: "easeOut",
-        }}
-        viewport={{ once: true, amount: 0.3 }}
-        className='text-xl text-tusi font-semibold mb-4'>
+      <h1 className='text-xl text-tusi font-semibold mb-4'>
         دسته‌بندی: {cate?.title || "نامشخص"}{" "}
         {sort.length > 0 && (
           <p className='text-sm font-thin mt-3 flex items-center'>
             {sort.length} - محصول
           </p>
         )}
-      </motion.h1>
+      </h1>
 
       {/* Filters */}
       <div className='flex flex-wrap gap-4 mb-6'>
@@ -78,15 +69,8 @@ export default function Categories({ category }: { category: string }) {
       <div className='grid sm:grid-cols-2 md:grid-cols-4 gap-6'>
         {sorted.length > 0 ? (
           sorted.map((product, index) => (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: index * 0.15,
-                duration: 0.5,
-                ease: "easeOut",
-              }}
-              viewport={{ once: true, amount: 0.3 }}
+            <div
+             
               key={index}
               className='sm:p-4 p-2 rounded border border-tusi/10'>
               <Image
@@ -104,7 +88,7 @@ export default function Categories({ category }: { category: string }) {
                 قیمت: {product.price} تومان
               </p>
               <AddToCart />
-            </motion.div>
+            </div>
           ))
         ) : (
           <p className='col-span-full text-center text-gray-500'>

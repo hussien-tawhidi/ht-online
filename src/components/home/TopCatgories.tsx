@@ -4,13 +4,16 @@ import Image from "next/image";
 import { topCategories } from "./data";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 export default function TopCatgories() {
+  const router = useRouter();
   return (
     <div className='w-[90%] mx-auto md:my-16 my-10'>
       <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-2'>
         {topCategories.map((item, index) => (
           <motion.div
             key={index}
+            onClick={() => router.push(item.link)}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
@@ -18,7 +21,8 @@ export default function TopCatgories() {
               duration: 0.5,
               ease: "easeOut",
             }}
-            viewport={{ once: true, amount: 0.3 }}>
+            viewport={{ once: true, amount: 0.3 }}
+            className='cursor-pointer'>
             <div className='md:my-5 my-2'>
               <h3 className='text-xl font-semibold text-tusi'>{item.title}</h3>
               <p className='text-tusi text-sm font-thin'>بر اساس سلیقه شما</p>

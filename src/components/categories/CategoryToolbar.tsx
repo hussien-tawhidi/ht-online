@@ -36,11 +36,9 @@ export default function CategoryToolbar({
     maxPrice !== defaultMaxPrice;
 
   return (
-    <motion.div
+    <div
       className='w-full flex flex-col items-center justify-between gap-4 sm:px-4 px-2 sm:py-3 py-1.5 rounded-md bg-lighter mb-6'
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}>
+     >
       <div className='flex items-center justify-between gap-4 w-full'>
         <SortDropdown value={sort} onChange={setSort} />
         <PriceFilter
@@ -54,15 +52,11 @@ export default function CategoryToolbar({
       {isFilterChanged && (
         <motion.button
           onClick={clearFilters}
-          className='mt-3 bg-tusi text-lighter px-4 py-2 rounded-md text-sm transition-all duration-300 flex items-center gap-1'
-          whileHover={{ scale: 1.05 }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}>
+          className='mt-3 bg-tusi text-lighter px-4 py-2 rounded-md text-sm transition-all duration-300 flex items-center gap-1'>
           <MdClear />
           پاک کردن فیلترها
         </motion.button>
       )}
-    </motion.div>
+    </div>
   );
 }

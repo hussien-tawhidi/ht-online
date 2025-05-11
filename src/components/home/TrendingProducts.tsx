@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { products } from "./data";
 import Banner from "../Banner";
 import ProductCarousel from "./ProductCarousel";
+import { sampleProducts } from "@/products-samples";
 
 const TrendingProducts = () => {
+  const newProducts = sampleProducts.filter((item) => item.isFeatured === true);
   return (
     <motion.section
       initial={{ opacity: 0, y: 30 }}
@@ -30,7 +31,7 @@ const TrendingProducts = () => {
 
       <ProductCarousel
         title='محصولات ترند'
-        products={products.slice(0, 6)}
+        products={newProducts.slice(0, 12)}
         showAllLink='/trending'
         isNew
       />

@@ -78,27 +78,27 @@ export const products = [
 export const topCategories = [
   {
     id: 1,
-    title: "ساعت مچی ",
+    title: "ساعت مچی",
     images: ["/home-categories/w1.jpg", "/home-categories/w2.jpg"],
-    link: "/categories/digital",
+    link: "/watches",
   },
   {
     id: 2,
     title: "کیف دوشی",
     images: ["/home-categories/b1.jpg", "/home-categories/b2.jpg"],
-    link: "/categories/clothing",
+    link: "/bags",
   },
   {
     id: 3,
     title: "عینک افتابی",
     images: ["/home-categories/g1.jpg", "/home-categories/g2.jpg"],
-    link: "/categories/home",
+    link: "/glasses",
   },
   {
     id: 4,
     title: "کفش اسپورت",
     images: ["/home-categories/s1.jpg", "/home-categories/s2.jpg"],
-    link: "/categories/books",
+    link: "/shoes",
   },
 ];
 
