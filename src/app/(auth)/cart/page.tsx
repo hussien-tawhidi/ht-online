@@ -4,14 +4,15 @@ import { RootState } from "@/store/store";
 import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import { MdOutlineDelete } from "react-icons/md";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import {
   removeFromCart,
   increaseQty,
   decreaseQty,
 } from "@/store/slice/cartSlice";
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 
 export default function UserCartPage() {
   const [isClient, setIsClient] = useState(false);
@@ -31,7 +32,16 @@ export default function UserCartPage() {
       <h1 className='text-2xl font-bold mb-6 text-tusi'>سبد خرید شما</h1>
 
       {cartItem.length === 0 ? (
-        <p className='text-gray-500 text-center'>سبد خرید شما خالی است</p>
+        <>
+          <p className='text-tusi text-center mb-4'>
+            سبد خرید شما خالی است
+          </p>
+          <button
+            onClick={() => router.push("/")}
+            className='mx-auto block bg-tusi text-lighter px-4 py-2 rounded-md hover:bg-tusi/90 transition'>
+            ادامه خرید
+          </button>
+        </>
       ) : (
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
           {/* Cart Items */}
@@ -39,7 +49,7 @@ export default function UserCartPage() {
             {cartItem.map((item) => (
               <div
                 key={item._id}
-                className='flex items-center justify-between border rounded-lg p-4 shadow-sm'>
+                className='flex items-center justify-between rounded-lg p-4 shadow-sm'>
                 <div className='flex items-center gap-4'>
                   <Image
                     src={item.image[0]?.url || "/placeholder.png"}
@@ -50,7 +60,7 @@ export default function UserCartPage() {
                   />
                   <div>
                     <h2 className='font-semibold text-tusi'>{item.name}</h2>
-                    <p className='text-sm text-gray-500'>
+                    <p className='text-sm text-tusi'>
                       قیمت: {item.price.toLocaleString()} تومان
                     </p>
                     <div className='flex items-center gap-2 mt-2'>
@@ -60,9 +70,13 @@ export default function UserCartPage() {
                         className='border px-2 rounded hover:bg-gray-100 text-sm disabled:opacity-50 disabled:cursor-not-allowed'>
                         <AiOutlineMinus />
                       </button>
-                      <span className='min-w-[20px] text-center'>
+                      <motion.span
+                        key={item.quantity}
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ duration: 0.2 }}
+                        className='min-w-[20px] text-center font-medium'>
                         {item.quantity}
-                      </span>
+                      </motion.span>
                       <button
                         onClick={() => dispatch(increaseQty(item._id))}
                         className='border px-2 rounded hover:bg-gray-100 text-sm'>

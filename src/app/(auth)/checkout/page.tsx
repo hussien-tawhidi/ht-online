@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function CheckoutPage() {
   const cartItem = useSelector((state: RootState) => state.cart.items);
@@ -33,6 +34,14 @@ export default function CheckoutPage() {
     router.push("/order-success");
   };
 
+  const [client, setClient] = useState(false);
+
+  useEffect(() => {
+    setClient(true);
+  }, []);
+
+  if (!client) return null; // or a skeleton loader
+
   return (
     <div className='p-4 mt-20 grid grid-cols-1 lg:grid-cols-3 gap-6'>
       {/* Form */}
@@ -49,7 +58,11 @@ export default function CheckoutPage() {
             {...register("name", { required: "این فیلد ضروری است" })}
             className='w-full border p-2 rounded'
           />
-          {errors.name?.message && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+          {errors.name?.message && (
+            <p className='text-red-500 text-sm'>
+              {errors.name.message as string}
+            </p>
+          )}
         </div>
 
         <div className='space-y-2'>
@@ -59,7 +72,9 @@ export default function CheckoutPage() {
             className='w-full border p-2 rounded'
           />
           {errors.phone && (
-            <p className='text-red-500 text-sm'>{errors.phone.message}</p>
+            <p className='text-red-500 text-sm'>
+              {errors.phone.message as string}
+            </p>
           )}
         </div>
 
@@ -71,7 +86,9 @@ export default function CheckoutPage() {
             rows={3}
           />
           {errors.address && (
-            <p className='text-red-500 text-sm'>{errors.address.message}</p>
+            <p className='text-red-500 text-sm'>
+              {errors.address.message as string}
+            </p>
           )}
         </div>
 
