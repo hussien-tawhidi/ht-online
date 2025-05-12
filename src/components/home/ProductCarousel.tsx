@@ -10,6 +10,7 @@ import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ProductTypes } from "../../../types/product.types";
+import AddToCartButton from "../AddToCartButton";
 
 interface Props {
   specail?: boolean;
@@ -86,6 +87,9 @@ const ProductCarousel = ({
   specail = false,
   isNew = false,
 }: Props) => {
+  // generate for static test
+  const randomId = Math.random().toString(36).substring(2, 10);
+
   return (
     <section className='text-right md:px-4 md:py-12 overflow-hidden'>
       <div className='flex items-center justify-between mb-6'>
@@ -168,11 +172,15 @@ const ProductCarousel = ({
                     تومان
                   </p>
 
-                  <button
-                    className='group relative flex items-center text-tusi hover:text-tusi transition'
-                    aria-label='افزودن به سبد خرید'>
-                    <PiShoppingBagThin className='text-xl' />
-                  </button>
+                  <AddToCartButton
+                    Icon={PiShoppingBagThin}
+                    _id={randomId}
+                    discountPrice={10}
+                    image={product.images}
+                    name={product.name}
+                    price={product.price}
+                    color={[{ name: "black", hex: "#000" }]}
+                  />
                 </div>
               </div>
             </motion.div>

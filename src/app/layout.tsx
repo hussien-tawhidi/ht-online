@@ -5,6 +5,7 @@ import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Footer from "@/components/footer/Footer";
+import ReduxProvider from "@/components/provider/ReduxProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +32,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className='text-darker'>
-          <Header />
-          {children}
-          <Footer />
+          <ReduxProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ReduxProvider>
         </div>
       </body>
     </html>

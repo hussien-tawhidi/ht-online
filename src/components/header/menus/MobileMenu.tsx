@@ -8,6 +8,7 @@ import { useState } from "react";
 import Search from "../search/Search";
 import MobileMenuDropDown from "./MobileMenuDropDown";
 import CloseBurgerMenu from "./CloseBurgerMenu";
+import CartDropdown from "@/components/cart/CartDropdown";
 
 const spring = {
   type: "spring",
@@ -18,7 +19,7 @@ const spring = {
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState(false);
-  // const toggleMenu = () => setIsOpen((prev) => !prev);
+  const [showCartItems, setShowCartItems] = useState(false);
   const router = useRouter();
 
   return (
@@ -61,6 +62,10 @@ export default function MobileMenu() {
           <MobileMenuDropDown open={open} setOpen={setOpen} />
           {/* search */}
           <Search search={search} />
+          <CartDropdown
+            showCartItems={showCartItems}
+            setShowCartItems={setShowCartItems}
+          />
           {/* Right Icons */}
           <li className='flex items-center gap-5 text-2xl relative z-20'>
             <motion.span
@@ -68,6 +73,7 @@ export default function MobileMenu() {
               whileHover={{ scale: 1.2 }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
+              onClick={() => router.push("/login")}
               transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
               <CiUser />
             </motion.span>
@@ -75,6 +81,7 @@ export default function MobileMenu() {
             {/* Cart Icon */}
             <motion.span
               className='font-thin cursor-pointer transition-all hover:text-tusi'
+              onClick={() => setShowCartItems(!showCartItems)}
               whileHover={{ scale: 1.2 }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import Search from "../search/Search";
 import Link from "next/link";
+import CartDropdown from "@/components/cart/CartDropdown";
 
 const spring = {
   type: "spring",
@@ -19,6 +20,7 @@ export default function DesktopMenu() {
   const router = useRouter();
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [search, setSearch] = useState(false);
+  const [showCartItems, setShowCartItems] = useState(false);
 
   return (
     <motion.div
@@ -69,9 +71,6 @@ export default function DesktopMenu() {
               } hover:opacity-100 py-10 px-2 font-thin transition-all hover:text-tusi`}>
               {item.title}
             </span>
-
-            {/* Underline animation */}
-            <span className='absolute bottom-0 right-0 h-[1px] w-0 bg-tusi transition-all duration-300 hover:w-full' />
 
             {/* Animated submenu */}
             <AnimatePresence>
@@ -126,6 +125,7 @@ export default function DesktopMenu() {
             </AnimatePresence>
           </motion.li>
         ))}
+        <CartDropdown showCartItems={showCartItems} setShowCartItems={setShowCartItems}/>
 
         {/* Search Icon */}
         <div className='flex items-center gap-7'>
@@ -143,9 +143,10 @@ export default function DesktopMenu() {
 
           {/* Cart Icon */}
           <motion.li
-            className='text-xl font-thin cursor-pointer transition-all hover:text-tusi'
+            className='text-xl font-thin cursor-pointer transition-all hover:text-tusi relative'
             whileHover={{ scale: 1.2 }}
             initial={{ opacity: 0 }}
+            onClick={() => setShowCartItems(!showCartItems)}
             animate={{ opacity: 1 }}
             transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
             <CiShoppingCart />

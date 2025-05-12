@@ -22,10 +22,6 @@ export default function Banner({ src, alt }: { src: string; alt?: string }) {
         height={200}
         className='object-cover transition-all hover:shadow duration-300 overflow-hidden w-full mx-auto'
       />
-      <div className='absolute top-0 right-0 backdrop-blur-[2px] h-full w-full transition-all duration-300 opacity-0 group-hover:opacity-50'></div>
-      <button className='absolute top-auto bottom-auto right-auto left-auto mx-auto cursor-pointer backdrop-blur-[4px] py-2 px-3 rounded opacity-0 transition-all duration-300 group-hover:opacity-100'>
-        برای دیدن بیشتر کلیک کنید
-      </button>
     </motion.div>
   );
 }
