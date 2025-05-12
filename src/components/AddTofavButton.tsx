@@ -1,7 +1,6 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "./ui/button";
 import { RootState } from "@/store/store";
 import { addToFavorites, CartItem } from "@/store/slice/cartSlice";
 import { CiHeart } from "react-icons/ci";
@@ -35,9 +34,9 @@ const AddTofavButton = ({
   };
 
   return (
-    <Button variant={"ghost"} onClick={addToFav}>
+    <button onClick={addToFav}>
       {!isFavorited ? <CiHeart /> : <FaHeart className='text-red-600' />}
-    </Button>
+    </button>
   );
 };
 

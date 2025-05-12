@@ -33,9 +33,7 @@ export default function UserCartPage() {
 
       {cartItem.length === 0 ? (
         <>
-          <p className='text-tusi text-center mb-4'>
-            سبد خرید شما خالی است
-          </p>
+          <p className='text-tusi text-center mb-4'>سبد خرید شما خالی است</p>
           <button
             onClick={() => router.push("/")}
             className='mx-auto block bg-tusi text-lighter px-4 py-2 rounded-md hover:bg-tusi/90 transition'>
@@ -88,7 +86,7 @@ export default function UserCartPage() {
 
                 <button
                   onClick={() => dispatch(removeFromCart(item._id))}
-                  className='text-red-500 hover:text-red-600 text-xl transition'>
+                  className='text-tusi text-xl transition'>
                   <MdOutlineDelete />
                 </button>
               </div>
@@ -96,7 +94,7 @@ export default function UserCartPage() {
           </div>
 
           {/* Cart Summary */}
-          <div className='border rounded-lg p-4 shadow-sm h-fit'>
+          <div className='border rounded-lg p-4 shadow-sm h-fit sticky top-24'>
             <h2 className='text-lg font-semibold text-tusi mb-4'>
               خلاصه سبد خرید
             </h2>
