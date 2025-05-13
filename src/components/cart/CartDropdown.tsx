@@ -42,7 +42,7 @@ export default function CartDropdown({
           </button>
           {cartItem.length > 0 ? (
             <div
-              className='lg:w-[40%] md:w-[60%] sm:w-[80%] p-10 w-full bg-lighter h-screen'
+              className='lg:w-[30%] md:w-[60%] sm:w-[80%] p-10 w-full bg-lighter h-screen'
               onClick={(e) => e.stopPropagation()}>
               <div className=''>
                 {cartItem.map((item) => (

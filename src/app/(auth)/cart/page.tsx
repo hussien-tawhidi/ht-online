@@ -1,30 +1,55 @@
 "use client";
 
 import { RootState } from "@/store/store";
-import { useSelector, useDispatch } from "react-redux";
-import Image from "next/image";
-import { MdOutlineDelete } from "react-icons/md";
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import {
-  removeFromCart,
-  increaseQty,
-  decreaseQty,
-} from "@/store/slice/cartSlice";
+import { useRouter } from "next/navigation";
+import CartItem from "@/components/cart/CartItem";
+import CartSummary from "@/components/cart/CartSummary";
+import PromoCode from "@/components/cart/PromoCode";
+import GiftWrap from "@/components/cart/GiftWrap";
+import Donation from "@/components/cart/Donation";
+import CartNote from "@/components/cart/CartNode";
 
 export default function UserCartPage() {
   const [isClient, setIsClient] = useState(false);
+  const [promoCode, setPromoCode] = useState("");
+  const [cartNote, setCartNote] = useState("");
+  const [giftWrap, setGiftWrap] = useState(false);
+  const [donation, setDonation] = useState(false);
+  const [discount, setDiscount] = useState(0);
+
   const cartItem = useSelector((state: RootState) => state.cart.items);
-  const dispatch = useDispatch();
   useEffect(() => setIsClient(true), []);
+  const router = useRouter();
+
   const totalPrice = cartItem.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
-  const router = useRouter();
+
   const totalQuantity = cartItem.reduce((acc, item) => acc + item.quantity, 0);
+  const freeShippingThreshold = 500000;
+  const remainingForFreeShipping = freeShippingThreshold - totalPrice;
+
+  useEffect(() => {
+    if (promoCode === "OFF20") {
+      setDiscount(0.2); // Apply 20% discount
+    } else {
+      setDiscount(0);
+    }
+  }, [promoCode]);
+
+  const handleCheckout = () => {
+    if (cartItem.length === 0) {
+      alert("Your cart is empty. Please add items before proceeding.");
+      return;
+    }
+    router.push("/checkout");
+  };
+
+  const finalTotal = totalPrice - totalPrice * discount;
+
   if (!isClient) return null;
 
   return (
@@ -44,78 +69,28 @@ export default function UserCartPage() {
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
           {/* Cart Items */}
           <div className='lg:col-span-2 space-y-4'>
-            {cartItem.map((item) => (
-              <div
-                key={item._id}
-                className='flex items-center justify-between rounded-lg p-4 shadow-sm'>
-                <div className='flex items-center gap-4'>
-                  <Image
-                    src={item.image[0]?.url || "/placeholder.png"}
-                    alt={item.name}
-                    width={60}
-                    height={60}
-                    className='rounded object-cover'
-                  />
-                  <div>
-                    <h2 className='font-semibold text-tusi'>{item.name}</h2>
-                    <p className='text-sm text-tusi'>
-                      قیمت: {item.price.toLocaleString()} تومان
-                    </p>
-                    <div className='flex items-center gap-2 mt-2'>
-                      <button
-                        onClick={() => dispatch(decreaseQty(item._id))}
-                        disabled={item.quantity === 1}
-                        className='border px-2 rounded hover:bg-gray-100 text-sm disabled:opacity-50 disabled:cursor-not-allowed'>
-                        <AiOutlineMinus />
-                      </button>
-                      <motion.span
-                        key={item.quantity}
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 0.2 }}
-                        className='min-w-[20px] text-center font-medium'>
-                        {item.quantity}
-                      </motion.span>
-                      <button
-                        onClick={() => dispatch(increaseQty(item._id))}
-                        className='border px-2 rounded hover:bg-gray-100 text-sm'>
-                        <AiOutlinePlus />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => dispatch(removeFromCart(item._id))}
-                  className='text-tusi text-xl transition'>
-                  <MdOutlineDelete />
-                </button>
-              </div>
+            {cartItem.map((item, index) => (
+              <CartItem key={index} item={item} />
             ))}
           </div>
 
           {/* Cart Summary */}
-          <div className='border rounded-lg p-4 shadow-sm h-fit sticky top-24'>
-            <h2 className='text-lg font-semibold text-tusi mb-4'>
-              خلاصه سبد خرید
-            </h2>
-            <div className='flex flex-col gap-2 text-sm text-gray-700'>
-              <div className='flex justify-between'>
-                <span>تعداد آیتم‌ها:</span>
-                <span>{cartItem.length}</span>
-              </div>
-              <div className='flex justify-between'>
-                <span>مجموع تعداد:</span>
-                <span>{totalQuantity}</span>
-              </div>
-              <div className='flex justify-between font-semibold text-tusi'>
-                <span>جمع کل:</span>
-                <span>{totalPrice.toLocaleString()} تومان</span>
-              </div>
-            </div>
-
+          <div className='rounded-xl p-5 shadow-md sticky top-24 h-fit'>
+            <CartSummary
+              cartItemLength={cartItem.length}
+              totalQuantity={totalQuantity}
+              totalPrice={totalPrice}
+              discount={discount}
+              finalTotal={finalTotal}
+              remainingForFreeShipping={remainingForFreeShipping}
+            />
+            <PromoCode promoCode={promoCode} setPromoCode={setPromoCode} />
+            <GiftWrap giftWrap={giftWrap} setGiftWrap={setGiftWrap} />
+            <Donation donation={donation} setDonation={setDonation} />
+            <CartNote cartNote={cartNote} setCartNote={setCartNote} />
             <button
-              onClick={() => router.push("/checkout")}
-              className='mt-6 w-full bg-tusi hover:bg-tusi/90 text-lighter py-3 rounded-lg text-sm transition'>
+              onClick={handleCheckout}
+              className='mt-6 w-full bg-tusi hover:bg-tusi/90 text-lighter py-3 rounded-lg text-sm font-medium transition shadow-sm disabled:opacity-50'>
               ادامه فرآیند خرید
             </button>
           </div>
