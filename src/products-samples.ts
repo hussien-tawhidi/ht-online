@@ -1,14 +1,21 @@
 export const sampleProducts = [
   // bags
   {
+    _id: "1",
     name: "کیف دوشی زنانه مدل کلاسیک",
     description: "کیف دوشی سبک با طراحی شیک مناسب استفاده روزمره.",
     sku: "SHD-001",
     price: 520000,
     category: "کیف",
     subcategories: "کیف دوشی",
-    stock: 15,
-    images: [{ public_id: "bag1", url: "/bags/b10.png" }],
+    stock: 1,
+    images: [
+      { public_id: "bag1", url: "/bags/b10.png" },
+      { public_id: "bag1-1", url: "/bags/b10-1.png" },
+      { public_id: "bag1-2", url: "/bags/b10-2.png" },
+      { public_id: "bag1-3", url: "/bags/b10-3.png" },
+      { public_id: "bag1-4", url: "/bags/b10-4.png" },
+    ],
     brand: "AldoGallery",
     discount: 10,
     ratings: 4.5,
@@ -22,6 +29,7 @@ export const sampleProducts = [
   },
   {
     name: "کوله پشتی اسپرت دخترانه",
+    _id: "2",
     description: "مناسب برای دانشجویان و استفاده روزمره.",
     sku: "BKP-002",
     price: 690000,
@@ -40,6 +48,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "3",
     name: "کیف دستی مجلسی زنانه",
     description: "طراحی لاکچری با بند زنجیری مناسب مجالس.",
     sku: "HDB-003",
@@ -61,6 +70,7 @@ export const sampleProducts = [
   },
   {
     name: "کیف پول مردانه چرم",
+    _id: "4",
     description: "کیف پول کلاسیک از چرم طبیعی با دوام بالا.",
     sku: "WLT-004",
     price: 320000,
@@ -79,6 +89,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "5",
     name: "کیف لپ‌تاپ چرم مصنوعی",
     description: "مناسب برای حمل لپ‌تاپ‌های 15 اینچ.",
     sku: "LTP-005",
@@ -99,6 +110,7 @@ export const sampleProducts = [
     warranty: "2 سال",
   },
   {
+    _id: "6",
     name: "کیف مدرسه دخترانه طرح یونیکورن",
     description: "طرح فانتزی و جادار برای کودکان.",
     sku: "SCH-006",
@@ -118,6 +130,7 @@ export const sampleProducts = [
     warranty: "6 ماه",
   },
   {
+    _id: "7",
     name: "کیف چرم دستی مردانه",
     description: "ساخته شده از چرم گاوی با کیفیت بالا.",
     sku: "LTH-007",
@@ -137,6 +150,7 @@ export const sampleProducts = [
     warranty: "2 سال",
   },
   {
+    _id: "8",
     name: "کیف ورزشی ضدآب",
     description: "مناسب باشگاه و سفرهای کوتاه.",
     sku: "SPB-008",
@@ -156,6 +170,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "9",
     name: "کیف زنانه طرح جدید ۲۰۲۵",
     description: "ترند جدید بازار با طراحی متفاوت و جادار.",
     sku: "WMN-009",
@@ -176,6 +191,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "10",
     name: "کیف مردانه اداری",
     description: "طراحی ساده، رسمی و مقاوم برای جلسات کاری.",
     sku: "MEN-010",
@@ -196,6 +212,7 @@ export const sampleProducts = [
   },
   // accessoris *************************************************************************************************
   {
+    _id: "11",
     name: "دستبند استیل طرح مینیمال",
     description: "دستبندی زیبا از جنس استیل ضد زنگ با طراحی مینیمال.",
     sku: "BR-101",
@@ -215,6 +232,7 @@ export const sampleProducts = [
     warranty: "6 ماه",
   },
   {
+    _id: "12",
     name: "کمربند چرمی مردانه اصل",
     description: "کمربند از چرم طبیعی مناسب برای استفاده روزمره و رسمی.",
     sku: "LB-102",
@@ -234,6 +252,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "13",
     name: "کلاه بافتنی زمستانی",
     description: "کلاه گرم و راحت برای فصول سرد سال.",
     sku: "HT-103",
@@ -253,6 +272,7 @@ export const sampleProducts = [
     warranty: "3 ماه",
   },
   {
+    _id: "14",
     name: "گردنبند زنانه سنگی",
     description: "گردنبند ساخته‌شده از سنگ‌های نیمه‌قیمتی.",
     sku: "NK-104",
@@ -272,6 +292,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "15",
     name: "عینک آفتابی کلاسیک",
     description: "عینک با فریم کلاسیک مناسب روزهای آفتابی.",
     sku: "SG-105",
@@ -291,6 +312,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "16",
     name: "کمربند فانتزی زنانه",
     description: "کمربند باریک مناسب لباس‌های مجلسی.",
     sku: "BT-109",
@@ -310,6 +332,7 @@ export const sampleProducts = [
     warranty: "3 ماه",
   },
   {
+    _id: "17",
     name: "ست جواهرات طرح یاقوت",
     description: "ست شامل گردنبند، دستبند و گوشواره با سنگ مصنوعی.",
     sku: "JW-110",
@@ -331,6 +354,7 @@ export const sampleProducts = [
   // glasses *************************************************************************************************
 
   {
+    _id: "18",
     name: "عینک آفتابی مدل کلاسیک",
     description: "عینک آفتابی با فریم مقاوم و شیشه UV400.",
     sku: "GL-201",
@@ -350,6 +374,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "19",
     name: "عینک طبی فریم فلزی",
     description: "عینک طبی سبک و بادوام مناسب استفاده روزانه.",
     sku: "GL-202",
@@ -369,6 +394,7 @@ export const sampleProducts = [
     warranty: "2 سال",
   },
   {
+    _id: "20",
     name: "عینک ورزشی ضد ضربه",
     description: "عینک ایمنی با لنز ضد خش مخصوص ورزشکاران.",
     sku: "GL-203",
@@ -388,6 +414,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "21",
     name: "عینک غواصی حرفه‌ای",
     description: "مناسب غواصی با لنزهای ضد بخار و بند قابل تنظیم.",
     sku: "GL-204",
@@ -407,6 +434,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "22",
     name: "عینک کودک رنگی",
     description: "عینک سبک با طراحی کودکانه و رنگ‌های جذاب.",
     sku: "GL-205",
@@ -426,6 +454,7 @@ export const sampleProducts = [
     warranty: "6 ماه",
   },
   {
+    _id: "23",
     name: "عینک گرافیکی ویژه گیمینگ",
     description: "عینک با فیلتر نور آبی برای کاهش خستگی چشم در استفاده طولانی.",
     sku: "GL-207",
@@ -447,6 +476,7 @@ export const sampleProducts = [
   // shoes *************************************************************************************************
 
   {
+    _id: "24",
     name: "کفش اسپرت راحتی مدل 2025",
     description: "کفش اسپرت مناسب استفاده روزمره با طراحی ارگونومیک.",
     sku: "SH-101",
@@ -466,6 +496,7 @@ export const sampleProducts = [
     warranty: "6 ماه",
   },
   {
+    _id: "25",
     name: "کفش رسمی چرم طبیعی",
     description: "کفش رسمی مردانه مناسب مراسم و محیط اداری.",
     sku: "SH-102",
@@ -485,6 +516,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "26",
     name: "صندل زنانه راحتی",
     description: "صندل سبک با کفی نرم برای پیاده‌روی طولانی.",
     sku: "SH-103",
@@ -504,6 +536,7 @@ export const sampleProducts = [
     warranty: "6 ماه",
   },
   {
+    _id: "27",
     name: "کفش راحتی اسفنجی",
     description: "مناسب استفاده روزمره با کفی مموری فوم.",
     sku: "SH-104",
@@ -523,6 +556,7 @@ export const sampleProducts = [
     warranty: "6 ماه",
   },
   {
+    _id: "27",
     name: "کفش کوهنوردی ضدآب",
     description: "مناسب صعود و مسیرهای سخت با زیره مقاوم.",
     sku: "SH-105",
@@ -542,6 +576,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "28",
     name: "کفش ورزشی زنانه سبک",
     description: "کفش نرم و سبک مناسب باشگاه و دویدن.",
     sku: "SH-106",
@@ -561,6 +596,7 @@ export const sampleProducts = [
     warranty: "9 ماه",
   },
   {
+    _id: "29",
     name: "کفش ورزشی مردانه حرفه‌ای",
     description: "کفش مناسب تمرینات سنگین با جذب شوک بالا.",
     sku: "SH-107",
@@ -580,6 +616,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "30",
     name: "چکمه چرمی بلند",
     description: "چکمه ضد آب با آستر گرم مناسب فصل زمستان.",
     sku: "SH-108",
@@ -601,6 +638,7 @@ export const sampleProducts = [
   // watches *************************************************************************************************
 
   {
+    _id: "31",
     name: "ساعت مچی مردانه استیل کلاسیک",
     description: "ساعت مقاوم با طراحی شیک و موتور ژاپنی.",
     sku: "WA-101",
@@ -620,6 +658,7 @@ export const sampleProducts = [
     warranty: "2 سال",
   },
   {
+    _id: "32",
     name: "ساعت مچی زنانه بند چرمی",
     description: "طراحی ظریف با بند چرم اصل مناسب مجالس.",
     sku: "WA-102",
@@ -639,6 +678,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "33",
     name: "ساعت هوشمند نسل جدید",
     description: "پشتیبانی از تماس، پیامک، سنجش ضربان قلب و فعالیت‌های ورزشی.",
     sku: "WA-103",
@@ -658,6 +698,7 @@ export const sampleProducts = [
     warranty: "1 سال",
   },
   {
+    _id: "34",
     name: "ساعت لوکس اتوماتیک با صفحه شیشه‌ای",
     description: "ساعت لوکس مخصوص کلکسیونرها با طراحی دست‌ساز.",
     sku: "WA-104",
@@ -677,6 +718,7 @@ export const sampleProducts = [
     warranty: "5 سال",
   },
   {
+    _id: "35",
     name: "ساعت کلاسیک عقربه‌ای چرمی",
     description: "سبک کلاسیک با صفحه مینیمال و بند چرم طبیعی.",
     sku: "WA-105",
@@ -696,6 +738,7 @@ export const sampleProducts = [
     warranty: "2 سال",
   },
   {
+    _id: "36",
     name: "ساعت ورزشی ضدآب",
     description: "مناسب برای شنا و ورزش‌های پرتحرک با امکانات متعدد.",
     sku: "WA-106",

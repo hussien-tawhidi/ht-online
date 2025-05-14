@@ -25,7 +25,7 @@ export default function MobileMenuDropDown({
   const handleItemClick = (itemId: number, href?: string) => {
     const selectedItem = header.find((h) => h.id === itemId);
     if (selectedItem?.submenu?.length) {
-      setActiveItem(activeItem === itemId ? null : itemId); // toggle submenu
+      setActiveItem(activeItem === itemId ? null : itemId);
     } else {
       if (href) router.push(href);
       setOpen(false);
@@ -45,7 +45,7 @@ export default function MobileMenuDropDown({
             transition={{ duration: 0.3 }}>
             {header.map((item, index) => (
               <motion.li
-                key={item.id}
+                key={index}
                 className='cursor-pointer group w-full'
                 onClick={() => handleItemClick(item.id, item.href)}
                 initial={{ opacity: 0, y: -5 }}
@@ -97,7 +97,10 @@ export default function MobileMenuDropDown({
                             delay: 0.1 + subIndex * 0.05,
                             duration: 0.3,
                           }}
-                          onClick={() => router.push(subItem.href)}>
+                          onClick={() => {
+                            router.push(subItem.href);
+                            setOpen(false); // Close the entire menu
+                          }}>
                           {subItem.title}
                         </motion.li>
                       ))}

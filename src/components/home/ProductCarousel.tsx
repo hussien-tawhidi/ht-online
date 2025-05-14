@@ -20,7 +20,6 @@ interface Props {
   isNew?: boolean;
 }
 
-// Convert English digits to Persian
 const toPersianDigits = (num: number | string): string => {
   return num.toString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]);
 };
@@ -87,9 +86,6 @@ const ProductCarousel = ({
   specail = false,
   isNew = false,
 }: Props) => {
-  // generate for static test
-  const randomId = Math.random().toString(36).substring(2, 10);
-
   return (
     <section className='text-right md:px-4 md:py-12 overflow-hidden'>
       <div className='flex items-center justify-between mb-6'>
@@ -143,26 +139,26 @@ const ProductCarousel = ({
                     <LiaGrinStars className='sm:flex hidden' />
                   </span>
                 )}
+                <Link href={`/product-detials/${product._id}`}>
+                  {product.images.map((item, i) => (
+                    <Image
+                      key={i}
+                      src={item.url}
+                      alt={product.name}
+                      width={300}
+                      height={200}
+                      className='rounded-xl object-cover w-full'
+                      // sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw'
+                    />
+                  ))}
 
-                {product.images.map((item, i) => (
-                  <Image
-                    key={i}
-                    src={item.url}
-                    alt={product.name}
-                    width={300}
-                    height={200}
-                    className='rounded-xl object-cover w-full'
-                    // sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw'
-                  />
-                ))}
-
-                <h3 className='text-sm text-tusi sm:mt-3 font-medium line-clamp-1'>
-                  {product.name}
-                </h3>
-                <p className='sm:text-sm text-[9px] sm:mt-1 text-tusi'>
-                  {product.category}
-                </p>
-
+                  <h3 className='text-sm text-tusi sm:mt-3 font-medium line-clamp-1'>
+                    {product.name}
+                  </h3>
+                  <p className='sm:text-sm text-[9px] sm:mt-1 text-tusi'>
+                    {product.category}
+                  </p>
+                </Link>
                 <div className='flex items-center justify-between mt-3'>
                   <p className='sm:font-semibold sm:text-[14px] text-sm'>
                     {toPersianDigits(product.price).replace(
@@ -174,7 +170,7 @@ const ProductCarousel = ({
 
                   <AddToCartButton
                     Icon={PiShoppingBagThin}
-                    _id={randomId}
+                    _id={product._id}
                     discountPrice={10}
                     image={product.images}
                     name={product.name}

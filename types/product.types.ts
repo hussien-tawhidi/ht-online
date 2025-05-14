@@ -1,5 +1,6 @@
 
 export interface ProductTypes {
+  _id: string;
   name: string;
   description: string;
   sku: string;
