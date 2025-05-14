@@ -1,9 +1,11 @@
 import ProductDetails from "@/components/product-details/ProductDetails";
 
-export default function productDetailsPage({
-  params,
-}: {
-  params: { productId: string };
-}) {
+type PageProps = {
+  params: {
+    productId: string;
+  };
+};
+
+export default async function ProductDetailsPage({ params }: PageProps) {
   return <ProductDetails productId={params.productId} />;
 }
