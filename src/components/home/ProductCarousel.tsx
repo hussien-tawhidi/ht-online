@@ -1,16 +1,12 @@
 "use client";
-
-import Image from "next/image";
 import Link from "next/link";
 import Slider, { CustomArrowProps } from "react-slick";
 import { motion } from "framer-motion";
-import { PiShoppingBagThin } from "react-icons/pi";
-import { LiaGrinStars } from "react-icons/lia";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ProductTypes } from "../../../types/product.types";
-import AddToCartButton from "../AddToCartButton";
+import ProductCard from "./CarouselCard";
 
 interface Props {
   specail?: boolean;
@@ -19,10 +15,6 @@ interface Props {
   showAllLink?: string;
   isNew?: boolean;
 }
-
-const toPersianDigits = (num: number | string): string => {
-  return num.toString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]);
-};
 
 // Custom arrow components
 const NextArrow = ({ onClick }: CustomArrowProps) => (
@@ -120,65 +112,18 @@ const ProductCarousel = ({
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
-                delay: i * 0.15,
+                delay: i * 0.05,
                 duration: 0.5,
                 ease: "easeOut",
               }}
               viewport={{ once: true, amount: 0.3 }}
               className='px-2'>
-              <div className='bg-white sm:p-4 rounded-2xl hover:shadow-md transition relative'>
-                {specail && (
-                  <span className='absolute flex items-center gap-1 top-2 left-2 bg-tusi text-lighter text-xs px-2 py-1 rounded-full z-10'>
-                    پیشنهاد ویژه
-                    <LiaGrinStars />
-                  </span>
-                )}
-                {isNew && (
-                  <span className='absolute flex items-center gap-1 top-2 left-2 bg-tusi text-lighter text-xs px-2 sm:py-1  rounded-full z-10'>
-                    جدید
-                    <LiaGrinStars className='sm:flex hidden' />
-                  </span>
-                )}
-                <Link href={`/product-detials/${product._id}`}>
-                  {product.images.map((item, i) => (
-                    <Image
-                      key={i}
-                      src={item.url}
-                      alt={product.name}
-                      width={300}
-                      height={200}
-                      className='rounded-xl object-cover w-full'
-                      // sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw'
-                    />
-                  ))}
-
-                  <h3 className='text-sm text-tusi sm:mt-3 font-medium line-clamp-1'>
-                    {product.name}
-                  </h3>
-                  <p className='sm:text-sm text-[9px] sm:mt-1 text-tusi'>
-                    {product.category}
-                  </p>
-                </Link>
-                <div className='flex items-center justify-between mt-3'>
-                  <p className='sm:font-semibold sm:text-[14px] text-sm'>
-                    {toPersianDigits(product.price).replace(
-                      /\B(?=(\d{3})+(?!\d))/g,
-                      "٬"
-                    )}{" "}
-                    تومان
-                  </p>
-
-                  <AddToCartButton
-                    Icon={PiShoppingBagThin}
-                    _id={product._id}
-                    discountPrice={10}
-                    image={product.images}
-                    name={product.name}
-                    price={product.price}
-                    color={[{ name: "black", hex: "#000" }]}
-                  />
-                </div>
-              </div>
+              <ProductCard
+                product={product}
+                special={specail}
+                isNew={isNew}
+                index={i}
+              />
             </motion.div>
           ))}
         </Slider>

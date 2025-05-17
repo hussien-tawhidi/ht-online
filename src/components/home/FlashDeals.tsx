@@ -96,73 +96,74 @@ const FlashDeals = () => {
             مشاهده همه
           </motion.button>
         </div>
-
-        <Slider {...settings}>
-          {flashDiscount.map((product, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: index * 0.15,
-                duration: 0.5,
-                ease: "easeOut",
-              }}
-              viewport={{ once: true, amount: 0.3 }}
-              whileHover={{ scale: 1.03 }}>
-              <div className='rounded-xl h-fit mx-3 relative overflow-hidden group'>
-                <span className='absolute top-2 right-2 bg-tusi text-lighter text-xs px-2 py-1 rounded'>
-                  ٪{product.discount ? product.discount : "10"}
-                  تخفیف
-                </span>
-
-                {product.images.map((image, index) => (
-                  <Image
-                    key={index}
-                    src={image.url}
-                    alt={product.name}
-                    width={300}
-                    height={300}
-                    className='rounded-xl w-full h-full object-cover'
-                  />
-                ))}
-
-                <h3 className='text-tusi font-semibold sm:text-sm text-xs whitespace-nowrap mt-3'>
-                  {product.name}
-                </h3>
-                <p className='sm:text-xs text-[9px] text-tusi mt-1'>
-                  {product.category}
-                </p>
-
-                <div className='flex  justify-betweenitems-center gap-2 mt-2'>
-                  <span className='text-tusi text-sm font-bold'>
-                    {hasMounted
-                      ? `${toPersianDigits(
-                          product.price.toLocaleString()
-                        )} تومان`
-                      : `${product.price} تومان`}
+        <motion.div
+          className=''
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.15,
+            duration: 0.5,
+            ease: "easeOut",
+          }}
+          viewport={{ once: true, amount: 0.3 }}
+          whileHover={{ scale: 1.03 }}>
+          <Slider {...settings}>
+            {flashDiscount.map((product, index) => (
+              <div key={index}>
+                <div className='rounded-xl h-fit mx-3 relative overflow-hidden group'>
+                  <span className='absolute top-2 right-2 bg-tusi text-lighter text-xs px-2 py-1 rounded'>
+                    ٪{product.discount ? product.discount : "10"}
+                    تخفیف
                   </span>
-                  <span className='line-through text-[10px] text-tusi/50'>
-                    {hasMounted
-                      ? `${toPersianDigits(
-                          product.price.toLocaleString()
-                        )} تومان`
-                      : `${product.price} تومان`}
-                  </span>
-                </div>
-                <div className='flex items-center justify-between w-full'>
-                  {hasMounted && (
-                    <div className='mt-3 text-sm flex gap-1.5 items-center font-medium'>
-                      {timeLeft[index]}
-                      <CiClock1 />
-                    </div>
-                  )}
-                  <AddToCart />
+
+                  {product.images.map((image, index) => (
+                    <Image
+                      key={index}
+                      src={image.url}
+                      alt={product.name}
+                      width={300}
+                      height={300}
+                      className='rounded-xl w-full h-full object-cover'
+                    />
+                  ))}
+
+                  <h3 className='text-tusi font-semibold sm:text-sm text-xs whitespace-nowrap mt-3'>
+                    {product.name}
+                  </h3>
+                  <p className='sm:text-xs text-[9px] text-tusi mt-1'>
+                    {product.category}
+                  </p>
+
+                  <div className='flex  justify-betweenitems-center gap-2 mt-2'>
+                    <span className='text-tusi text-sm font-bold'>
+                      {hasMounted
+                        ? `${toPersianDigits(
+                            product.price.toLocaleString()
+                          )} تومان`
+                        : `${product.price} تومان`}
+                    </span>
+                    <span className='line-through text-[10px] text-tusi/50'>
+                      {hasMounted
+                        ? `${toPersianDigits(
+                            product.price.toLocaleString()
+                          )} تومان`
+                        : `${product.price} تومان`}
+                    </span>
+                  </div>
+                  <div className='flex items-center justify-between w-full'>
+                    {hasMounted && (
+                      <div className='mt-3 text-sm flex gap-1.5 items-center font-medium'>
+                        {timeLeft[index]}
+                        <CiClock1 />
+                      </div>
+                    )}
+                    <AddToCart />
+                  </div>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </Slider>
+            ))}
+          </Slider>
+        </motion.div>
       </div>
     </section>
   );

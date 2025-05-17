@@ -42,9 +42,9 @@ export default function Categories({ category }: { category: string }) {
     <div className='p-4'>
       <h1 className='text-xl text-tusi font-semibold mb-4'>
         دسته‌بندی: {cate?.title || "نامشخص"}{" "}
-        {sort.length > 0 && (
+        {filtered.length > 0 && (
           <p className='text-sm font-thin mt-3 flex items-center'>
-            {sort.length} - محصول
+            {filtered.length} - محصول
           </p>
         )}
       </h1>
@@ -70,7 +70,6 @@ export default function Categories({ category }: { category: string }) {
         {sorted.length > 0 ? (
           sorted.map((product, index) => (
             <div
-             
               key={index}
               className='sm:p-4 p-2 rounded border border-tusi/10'>
               <Image

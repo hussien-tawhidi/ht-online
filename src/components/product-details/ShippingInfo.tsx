@@ -6,11 +6,11 @@ export default function ShippingInfo() {
   const [showShipping, setShowShipping] = useState(false);
 
   return (
-    <div className='pt-4 mt-6 text-sm text-darker/50'>
+    <div className='p-3 mt-6 text-sm text-darker/50 border rounded-md border-tusi/30'>
       {/* Toggle Button */}
       <button
         onClick={() => setShowShipping(!showShipping)}
-        className='flex items-center gap-1 font-semibold text-tusi'>
+        className='flex items-center gap-1 font-semibold text-tusi  justify-between w-full'>
         اطلاعات ارسال و گارانتی
         <motion.span
           animate={{ rotate: showShipping ? 0 : 180 }}

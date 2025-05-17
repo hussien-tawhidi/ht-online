@@ -6,16 +6,21 @@ import { LuClock } from "react-icons/lu";
 import { MdOutlineAttachMoney } from "react-icons/md";
 
 export const cate = [
-  { image: "/menu/categories/bag.png", title: "کیف", link: "/bags" },
+  {
+    image: "/menu/categories/bag.png",
+    title: "کیف",
+    href: "/bags",
+    category: "کیف",
+  },
   {
     image: "/menu/categories/accessories.png",
     title: "اکسسوریس",
-    link: "/accessories",
+    href: "/accessories",
   },
-  { image: "/menu/categories/glasses.png", title: "عینک", link: "/glasses" },
-  { image: "/menu/categories/shoes.png", title: "کفش", link: "/shoes" },
-  { image: "/menu/categories/watch.png", title: "ساعت", link: "/watch" },
-  { image: "/menu/categories/clothes.png", title: "لباس", link: "/clothes" },
+  { image: "/menu/categories/glasses.png", title: "عینک", href: "/glasses" },
+  { image: "/menu/categories/shoes.png", title: "کفش", href: "/shoes" },
+  { image: "/menu/categories/watch.png", title: "ساعت", href: "/watches" },
+  { image: "/menu/categories/clothes.png", title: "لباس", href: "/clothes" },
 ];
 
 export const products = [
@@ -142,6 +147,7 @@ export const features = [
     icon: IoMdCheckmarkCircleOutline,
   },
 ];
+
 export const blogs = [
   {
     id: 1,

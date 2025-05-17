@@ -7,9 +7,9 @@ export default function ProductHighlights() {
   const [showHighlights, setShowHighlights] = useState(true);
 
   return (
-    <div>
+    <div className='border rounded-md border-tusi/30 mt-5 p-3'>
       <button
-        className='text-tusi font-semibold mt-6 flex items-center gap-1.5'
+        className='text-tusi font-semibold flex items-center gap-1.5 justify-between w-full'
         onClick={() => setShowHighlights(!showHighlights)}>
         چرا این محصول؟{" "}
         <motion.div

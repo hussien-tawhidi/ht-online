@@ -14,9 +14,9 @@ export default function ProductSpecifications({
   const [showSpecs, setShowSpecs] = useState(true);
 
   return (
-    <div>
+    <div className='border rounded-md border-tusi/30 p-3 mt-10'>
       <button
-        className='text-tusi font-semibold mt-6 flex items-center gap-1.5'
+        className='text-tusi font-semibold flex items-center gap-1.5 justify-between w-full'
         onClick={() => setShowSpecs(!showSpecs)}>
         ویژگی‌ها
         <motion.div

@@ -16,24 +16,6 @@ const RecommendedProducts = () => {
       />
       <div className='grid gap-2 md:grid-cols-2 mt-10  overflow-hidden'>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.1,
-            duration: 0.5,
-            ease: "easeOut",
-          }}
-          viewport={{ once: true, amount: 0.3 }}
-          whileHover={{ scale: 1.03 }}>
-          <Image
-            src={"/banner/recomended-glasses-banner.jpg"}
-            alt={"recomended-glasses-banner"}
-            width={1000}
-            height={200}
-            className='object-cover transition-all hover:shadow duration-300 overflow-hidden w-full mx-auto'
-          />
-        </motion.div>
-        <motion.div
           className='overflow-hidden'
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,6 +32,24 @@ const RecommendedProducts = () => {
             width={1000}
             height={200}
             className='object-cover transition-all hover:shadow duration-300 overflow-hidden w-fit mx-auto'
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.1,
+            duration: 0.5,
+            ease: "easeOut",
+          }}
+          viewport={{ once: true, amount: 0.3 }}
+          whileHover={{ scale: 1.03 }}>
+          <Image
+            src={"/banner/recomended-glasses-banner.jpg"}
+            alt={"recomended-glasses-banner"}
+            width={1000}
+            height={200}
+            className='object-cover transition-all hover:shadow duration-300 overflow-hidden w-full mx-auto'
           />
         </motion.div>
       </div>

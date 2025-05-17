@@ -13,6 +13,7 @@ interface AddToCartButtonProps {
   discountPrice: number;
   type?: "submit" | "reset" | "button" | undefined;
   className?: string;
+  text?: string;
 }
 
 const AddToCartButton: React.FC<AddToCartButtonProps> = ({
@@ -25,6 +26,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   price,
   discountPrice,
   className,
+  text,
 }) => {
   const dispatch = useDispatch();
   const cartItem = useSelector((state: RootState) => state.cart.items);
@@ -48,9 +50,10 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
       <button
         disabled={color.length === 0}
         type={type}
-        className={`group relative flex items-center text-tusi hover:text-tusi transition${className}`}
+        className={`group relative flex gap-1.5 items-center text-tusi transition${className}`}
         onClick={handleAddToCart}>
         {Icon && <Icon />}
+        {text}
       </button>
     </div>
   );

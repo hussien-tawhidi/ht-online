@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import SortDropdown from "./SortSelect";
-import PriceFilter from "./PriceFilter";
+import PriceFilter from "./price-filter/PriceFilter";
 import { MdClear } from "react-icons/md";
 
 interface CategoryToolbarProps {

@@ -9,6 +9,8 @@ import { useState } from "react";
 import Search from "../search/Search";
 import Link from "next/link";
 import CartDropdown from "@/components/cart/CartDropdown";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 const spring = {
   type: "spring",
@@ -21,6 +23,7 @@ export default function DesktopMenu() {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [search, setSearch] = useState(false);
   const [showCartItems, setShowCartItems] = useState(false);
+  const cartItem = useSelector((state: RootState) => state.cart.items);
 
   return (
     <motion.div
@@ -125,7 +128,10 @@ export default function DesktopMenu() {
             </AnimatePresence>
           </motion.li>
         ))}
-        <CartDropdown showCartItems={showCartItems} setShowCartItems={setShowCartItems}/>
+        <CartDropdown
+          showCartItems={showCartItems}
+          setShowCartItems={setShowCartItems}
+        />
 
         {/* Search Icon */}
         <div className='flex items-center gap-7'>
@@ -143,12 +149,22 @@ export default function DesktopMenu() {
 
           {/* Cart Icon */}
           <motion.li
-            className='text-xl font-thin cursor-pointer transition-all hover:text-tusi relative'
+            className='text-xl font-thin cursor-pointer relative transition-all hover:text-tusi'
             whileHover={{ scale: 1.2 }}
             initial={{ opacity: 0 }}
             onClick={() => setShowCartItems(!showCartItems)}
             animate={{ opacity: 1 }}
             transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
+            <motion.span
+              key={cartItem.length}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 500, damping: 20 }}
+              className='absolute -top-2 -right-2 bg-red-700 text-white text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center'>
+              {cartItem.length}
+            </motion.span>
+
+            {/* Cart Icon */}
             <CiShoppingCart />
           </motion.li>
           <motion.li

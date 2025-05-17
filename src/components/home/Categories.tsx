@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { cate } from "./data";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Categories() {
+  const router = useRouter();
   return (
     <div className='mx-auto w-[90%] flex justify-center mt-10 flex-col items-center py-10'>
       <p className='h-1 md:text-3xl text-xl font-extrabold text-tusi mb-3 opacity-80'>
@@ -14,6 +16,7 @@ export default function Categories() {
         {cate.map((item, index) => (
           <motion.div
             key={index}
+            onClick={() => router.push(item.href)}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{

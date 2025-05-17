@@ -4,7 +4,7 @@ import Slider, { CustomArrowProps } from "react-slick";
 import { features } from "./data";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { motion } from "framer-motion";
-// Always visible Next Arrow
+
 const NextArrow = ({ onClick }: CustomArrowProps) => (
   <button
     type='button'
@@ -15,7 +15,6 @@ const NextArrow = ({ onClick }: CustomArrowProps) => (
   </button>
 );
 
-// Always visible Prev Arrow
 const PrevArrow = ({ onClick }: CustomArrowProps) => (
   <button
     type='button'
@@ -26,7 +25,6 @@ const PrevArrow = ({ onClick }: CustomArrowProps) => (
   </button>
 );
 
-// Slider settings
 const settings = {
   dots: false,
   infinite: true,
@@ -60,7 +58,7 @@ export default function Features() {
         <Slider {...settings}>
           {features.map((feature, index) => (
             <motion.div
-              key={feature.id}
+              key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{

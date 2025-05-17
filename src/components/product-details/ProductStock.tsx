@@ -13,6 +13,7 @@ interface productProps {
   stock: number;
   brand: string;
   sku: string;
+  discount?: number;
 }
 
 export default function ProductStock({
@@ -27,16 +28,16 @@ export default function ProductStock({
   return (
     <div className='text-sm flex sm:flex-row flex-col sm:items-center justify-between'>
       {/* Add to Cart */}
-      <div className='flex items-center justify-center gap-1 border rounded-md py-2 px-4  text-tusi cursor-pointer transition-all hover:bg-tusi hover:text-lighter border-tusi/30'>
-        <p>افزودین به کارت</p>
+      <div className='flex items-center justify-center gap-1 border rounded-md px-4  text-tusi cursor-pointer transition-all hover:bg-tusi hover:text-lighter border-tusi/30'>
         <AddToCartButton
           Icon={PiShoppingBagThin}
           _id={product._id}
-          discountPrice={10}
-          image={product.images}
+          discountPrice={product.discount || 0}
+          image={product.images} text="همین حالا خرید کنید"
           name={product.name}
           price={product.price}
           color={[{ name: "black", hex: "#000" }]}
+          className='w-full text-center py-2 text-tusi hover:bg-tusi/10 hover:text-lighter transition'
         />
       </div>
       <div className='mt-4 flex md:items-center lg:flex-row md:flex-col flex-row gap-3 text-sm'>
