@@ -2,6 +2,7 @@ import { addToCart } from "@/store/slice/cartSlice";
 import { IconType } from "react-icons/lib";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import { useEffect, useState } from "react";
 
 interface AddToCartButtonProps {
   _id: string;
@@ -28,6 +29,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   className,
   text,
 }) => {
+  const [mounted, setMounted] = useState(false);
   const dispatch = useDispatch();
   const cartItem = useSelector((state: RootState) => state.cart.items);
   const existItem = cartItem.find((item) => item._id === _id);
@@ -44,6 +46,18 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
       })
     );
   };
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className='w-24 h-8' />; // reserve space if needed
+  }
+
+  // only render once mounted
+  if (existItem) {
+    return null;
+  }
 
   return (
     <div className={existItem ? "hidden" : "block"}>

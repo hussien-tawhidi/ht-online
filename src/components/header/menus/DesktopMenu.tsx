@@ -5,7 +5,7 @@ import { header } from "../data";
 import { CiSearch, CiShoppingCart, CiUser } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "../search/Search";
 import Link from "next/link";
 import CartDropdown from "@/components/cart/CartDropdown";
@@ -24,7 +24,11 @@ export default function DesktopMenu() {
   const [search, setSearch] = useState(false);
   const [showCartItems, setShowCartItems] = useState(false);
   const cartItem = useSelector((state: RootState) => state.cart.items);
+  const [mounted, setMounted] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <motion.div
       className='flex items-center relative h-[10vh] justify-center'
@@ -145,7 +149,7 @@ export default function DesktopMenu() {
             <CiSearch />
           </motion.li>
 
-          <Search search={search} />
+          <Search search={search} setSearch={setSearch} />
 
           {/* Cart Icon */}
           <motion.li
@@ -161,7 +165,7 @@ export default function DesktopMenu() {
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 500, damping: 20 }}
               className='absolute -top-2 -right-2 bg-red-700 text-white text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center'>
-              {cartItem.length}
+              {mounted ? cartItem.length : 0}
             </motion.span>
 
             {/* Cart Icon */}

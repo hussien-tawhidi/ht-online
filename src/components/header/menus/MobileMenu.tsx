@@ -4,11 +4,13 @@ import Image from "next/image";
 import { CiSearch, CiShoppingCart, CiUser } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "../search/Search";
 import MobileMenuDropDown from "./MobileMenuDropDown";
 import CloseBurgerMenu from "./CloseBurgerMenu";
 import CartDropdown from "@/components/cart/CartDropdown";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 const spring = {
   type: "spring",
@@ -21,6 +23,13 @@ export default function MobileMenu() {
   const [search, setSearch] = useState(false);
   const [showCartItems, setShowCartItems] = useState(false);
   const router = useRouter();
+
+  const cartItem = useSelector((state: RootState) => state.cart.items);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <div className='bg-lighter w-full'>
@@ -61,7 +70,7 @@ export default function MobileMenu() {
           {/* Animated Mobile Menu Items */}
           <MobileMenuDropDown open={open} setOpen={setOpen} />
           {/* search */}
-          <Search search={search} />
+          <Search search={search} setSearch={setSearch} />
           <CartDropdown
             showCartItems={showCartItems}
             setShowCartItems={setShowCartItems}
@@ -80,12 +89,20 @@ export default function MobileMenu() {
 
             {/* Cart Icon */}
             <motion.span
-              className='font-thin cursor-pointer transition-all hover:text-tusi'
+              className='font-thin cursor-pointer relative transition-all hover:text-tusi'
               onClick={() => setShowCartItems(!showCartItems)}
               whileHover={{ scale: 1.2 }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
+              <motion.span
+                key={cartItem.length}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 500, damping: 20 }}
+                className='absolute -top-2 -right-2 bg-red-700 text-white text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center'>
+                {mounted ? cartItem.length : 0}
+              </motion.span>
               <CiShoppingCart />
             </motion.span>
 

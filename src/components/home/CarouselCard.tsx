@@ -61,21 +61,21 @@ export default function ProductCard({
         <Badge
           text='پیشنهاد ویژه'
           icon={<LiaGrinStars />}
-          className='bg-pink-500 text-white'
+          className='bg-[#f6339a] text-lighter'
         />
       )}
       {isNew && (
         <Badge
           text='جدید'
           icon={<LiaGrinStars />}
-          className='bg-blue-500 text-white top-10'
+          className='bg-[#1447e6]/50 text-lighter top-10'
         />
       )}
       {hasDiscount && (
         <Badge
           text={`٪${product.discount}`}
           icon={<LiaGrinStars />}
-          className='bg-red-500 text-white right-2 left-auto'
+          className='bg-[#fb2c36] text-lighter right-2 left-auto'
         />
       )}
 
@@ -83,12 +83,12 @@ export default function ProductCard({
       <div className='absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity'>
         <button
           aria-label='علاقه‌مندی'
-          className='p-1 bg-white rounded-full shadow hover:scale-105 transition'>
+          className='p-1 bg-lighter rounded-full shadow hover:scale-105 transition'>
           <BiHeart className='w-4 h-4 text-tusi' />
         </button>
         <button
           aria-label='پیش‌نمایش سریع'
-          className='p-1 bg-white rounded-full shadow hover:scale-105 transition'>
+          className='p-1 bg-lighter rounded-full shadow hover:scale-105 transition'>
           <BsEye className='w-4 h-4 text-tusi' />
         </button>
       </div>
@@ -121,17 +121,17 @@ export default function ProductCard({
             {product.variants?.map((v, i) => (
               <span
                 key={i}
-                className='sm:w-4 sm:h-4 w-2 h-2 rounded-full border border-gray-300'
+                className='sm:w-4 sm:h-4 w-2 h-2 rounded-full border border-darker/30'
                 style={{ backgroundColor: v.hex }}
                 title={v.name}
               />
             ))}
           </div>
-          <p className='text-xs sm:flex hidden text-gray-500'>
+          <p className='text-xs sm:flex hidden text-darker/50'>
             {product.category}
           </p>
           {/* Rating */}
-          <div className='flex items-center text-yellow-400 sm:text-xs text-[9px] mt-0.5'>
+          <div className='flex items-center text-[#f9a603] sm:text-xs text-[9px] mt-0.5'>
             {[...Array(5)].map((_, i) => (
               <HiStar
                 key={i}
@@ -142,7 +142,7 @@ export default function ProductCard({
                 }
               />
             ))}
-            <span className='ml-1 text-[10px] text-gray-500'>
+            <span className='ml-1 text-[10px] text-darker/50'>
               <span className='sm:flex hidden'>
                 {(product.ratings ?? 0).toFixed(1)}
               </span>{" "}
@@ -155,7 +155,7 @@ export default function ProductCard({
       {/* Price & Add to Cart */}
       <div className='md:mt-4 mt-1.5 space-y-1'>
         {hasDiscount && (
-          <p className='sm:text-xs text-[8px] line-through text-gray-400'>
+          <p className='sm:text-xs text-[8px] line-through text-darker/40'>
             {formatPrice(product.originalPrice!)}
           </p>
         )}
@@ -166,7 +166,7 @@ export default function ProductCard({
           )}
         </p>
         {/* Shipping Tag */}
-        <span className='flex items-center text-center w-fit mx-auto gap-1 bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-full'>
+        <span className='flex items-center text-center w-fit mx-auto gap-1 bg-[#dcfce7] text-[#2e8c4f] text-[10px] px-2 py-0.5 rounded-full'>
           <BsTruck className='w-3 h-3' /> ارسال رایگان
         </span>
       </div>

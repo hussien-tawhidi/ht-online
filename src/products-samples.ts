@@ -536,7 +536,7 @@ export const sampleProducts = [
     warranty: "6 ماه",
   },
   {
-    _id: "27",
+    _id: "270",
     name: "کفش راحتی اسفنجی",
     description: "مناسب استفاده روزمره با کفی مموری فوم.",
     sku: "SH-104",
