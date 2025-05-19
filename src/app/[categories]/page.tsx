@@ -15,9 +15,8 @@ export default async function Page({ params }: any) {
 }
 export async function generateMetadata({
   params,
-}: {
-  params: { categories: string };
-}): Promise<Metadata> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+}: any): Promise<Metadata> {
   const cate = header.find((item) => item.href === `/${params.categories}`);
 
   return {

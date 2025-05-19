@@ -12,9 +12,8 @@ export default async function ProductDetailsPage({ params }: any) {
 }
 export async function generateMetadata({
   params,
-}: {
-  params: { productId: string };
-}): Promise<Metadata> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+}:any): Promise<Metadata> {
   const product = sampleProducts.find((item) => item._id === params.productId);
 
   return {
