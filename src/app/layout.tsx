@@ -7,6 +7,7 @@ import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "rc-slider/assets/index.css";
+import { SessionProvider } from "next-auth/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,19 +33,21 @@ export default function RootLayout({
     <html dir='rtl'>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <main className='text-darker'>
-          <link
-            rel='icon'
-            href='/logo.ico'
-            sizes='any'
-            className='h-auto w-3'
-          />
-          <ReduxProvider>
-            <Header />
-            {children}
-            <Footer />
-          </ReduxProvider>
-        </main>
+        <SessionProvider>
+          <main className='text-darker'>
+            <link
+              rel='icon'
+              href='/logo.ico'
+              sizes='any'
+              className='h-auto w-3'
+            />
+            <ReduxProvider>
+              <Header />
+              {children}
+              <Footer />
+            </ReduxProvider>
+          </main>
+        </SessionProvider>
       </body>
     </html>
   );
