@@ -1,8 +1,14 @@
 
-import SearchPage from "@/components/header/search/SearchPage";
+import dynamic from "next/dynamic";
 
+const SearchClient = dynamic(
+  () => import("@/components/header/search/SearchPage"),
+  {
+    ssr: false, // ensure it only renders on the client
+  }
+);
 export default function SearchUserPage() {
-  return <SearchPage />;
+  return <SearchClient />;
 }
 
 export async function generateMetadata() {
