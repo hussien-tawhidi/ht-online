@@ -172,12 +172,13 @@ export default function DesktopMenu() {
             <CiShoppingCart />
           </motion.li>
           <motion.li
-            onClick={() => router.push("/login")}
+            // onClick={() => router.push("/login")}
             className='text-xl font-thin cursor-pointer transition-all hover:text-tusi'
             whileHover={{ scale: 1.2 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
+            
             <CiUser />
           </motion.li>
         </div>

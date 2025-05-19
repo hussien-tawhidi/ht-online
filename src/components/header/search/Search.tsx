@@ -8,6 +8,7 @@ import { suggestions } from "../data";
 import { sampleProducts } from "@/products-samples";
 import { ProductTypes } from "../../../../types/product.types";
 import { SearchResultCard } from "./SearchResultCard";
+import Link from "next/link";
 
 type SearchProps = {
   onSearch?: (query: string) => void;
@@ -132,19 +133,18 @@ export default function Search({ search, setSearch }: SearchProps) {
                   </button>
                 )}
               </div>
+
               <div className='flex flex-wrap gap-2 mb-3'>
                 {categories.map((cat) => (
                   <button
                     key={cat}
                     onClick={() => toggleFilter(cat)}
-                    className={`
-        px-3 py-1 rounded-full text-sm border
+                    className={`px-3 py-1 rounded-full text-sm border
         ${
           activeFilters.includes(cat)
             ? "bg-tusi text-lighter border-tusi"
             : "bg-lighter text-darker/60 border-darker/50"
-        }
-      `}>
+        }`}>
                     {cat}
                   </button>
                 ))}
@@ -169,20 +169,27 @@ export default function Search({ search, setSearch }: SearchProps) {
             {mode === "results" ? (
               results.length > 0 ? (
                 <div>
+                  <div className='text-right'>
+                    <Link
+                      href={`/search?query=${encodeURIComponent(query)}`}
+                      onClick={() => setSearch(false)}
+                      className='text-sm underline text-tusi hover:text-darker'>
+                      مشاهدهٔ همهٔ نتایج ({results.length})
+                    </Link>
+                  </div>
                   <div
                     className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-3 gap-1.5'
                     onClick={() => setSearch(false)}>
                     {filteredResults.map((p) => (
-                      <li key={p._id}>
-                        <SearchResultCard
-                          product={{
-                            ...p,
-                            name: (
-                              <span>{highlightMatch(p.name, query)}</span>
-                            ) as unknown as string,
-                          }}
-                        />
-                      </li>
+                      <SearchResultCard
+                        key={p._id}
+                        product={{
+                          ...p,
+                          name: (
+                            <span>{highlightMatch(p.name, query)}</span>
+                          ) as unknown as string,
+                        }}
+                      />
                     ))}
                   </div>
                 </div>
