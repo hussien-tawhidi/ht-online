@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
 import { sampleProducts } from "@/products-samples";
 import { SearchResultCard } from "@/components/header/search/SearchResultCard";
 import PriceFilter from "@/components/categories/price-filter/PriceFilter";
@@ -108,73 +108,79 @@ export default function SearchPage() {
   };
 
   return (
-    <div className='min-h-screen bg-lighter py-10 px-4 md:px-14 lg:px-48 mt-10'>
-      {/* Search Input */}
-      <div className='flex sm:flex-row flex-col items-center justify-center gap-2 mb-6'>
-        <input
-          className='flex-1 border border-tusi/30 w-full rounded px-4 sm:py-2'
-          placeholder='جستجو کنید...'
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button
-          onClick={() => setQuery("")}
-          className='px-4 py-2 bg-tusi text-lighter rounded sm:w-auto h-full w-full flex items-center justify-center'>
-          <MdClear />
-        </button>
-      </div>
-
-      {/* Filters Panel */}
-      <div className='flex flex-wrap gap-3 mb-6'>
-        {/* Categories */}
-        <CategoryFilter
-          categories={categories}
-          active={activeCats}
-          onToggle={(cat) =>
-            setActiveCats((f) =>
-              f.includes(cat) ? f.filter((x) => x !== cat) : [...f, cat]
-            )
-          }
-          clearAll={clearSearch}
-        />
-
-        {/* Price Range */}
-        <PriceFilter
-          minPrice={minPrice}
-          maxPrice={maxPrice}
-          setMinPrice={setMinPrice}
-          setMaxPrice={setMaxPrice}
-        />
-        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-        <SortDropdown value={sortKey} onChange={(v) => setSortKey(v as any)} />
-      </div>
-
-      {/* Results Grid */}
-      {paged.length > 0 ? (
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 list-none p-0'>
-          {paged.map((p) => (
-            <ul key={p._id}>
-              <SearchResultCard
-                product={{
-                  ...p,
-                  name: highlight(p.name) as unknown as string,
-                }}
-              />
-            </ul>
-          ))}
+    <Suspense fallback={"loading"}>
+      <div className='min-h-screen bg-lighter py-10 px-4 md:px-14 lg:px-48 mt-10'>
+        {/* Search Input */}
+        <div className='flex sm:flex-row flex-col items-center justify-center gap-2 mb-6'>
+          <input
+            className='flex-1 border border-tusi/30 w-full rounded px-4 sm:py-2'
+            placeholder='جستجو کنید...'
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button
+            onClick={() => setQuery("")}
+            className='px-4 py-2 bg-tusi text-lighter rounded sm:w-auto h-full w-full flex items-center justify-center'>
+            <MdClear />
+          </button>
         </div>
-      ) : (
-        <p className='text-center text-darker/50'>هیچ محصولی یافت نشد.</p>
-      )}
 
-      {/* Load More */}
-      {canLoadMore && (
-        <button
-          onClick={() => setPage((x) => x + 1)}
-          className='block mx-auto mt-6 px-4 py-2 bg-tusi text-lighter rounded'>
-          بارگذاری بیشتر
-        </button>
-      )}
-    </div>
+        {/* Filters Panel */}
+        <div className='flex flex-wrap gap-3 mb-6'>
+          {/* Categories */}
+          <CategoryFilter
+            categories={categories}
+            active={activeCats}
+            onToggle={(cat) =>
+              setActiveCats((f) =>
+                f.includes(cat) ? f.filter((x) => x !== cat) : [...f, cat]
+              )
+            }
+            clearAll={clearSearch}
+          />
+
+          {/* Price Range */}
+          <PriceFilter
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            setMinPrice={setMinPrice}
+            setMaxPrice={setMaxPrice}
+          />
+     
+          <SortDropdown
+            value={sortKey}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            onChange={(v) => setSortKey(v as any)}
+          />
+        </div>
+
+        {/* Results Grid */}
+        {paged.length > 0 ? (
+          <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 list-none p-0'>
+            {paged.map((p) => (
+              <ul key={p._id}>
+                <SearchResultCard
+                  product={{
+                    ...p,
+                    name: highlight(p.name) as unknown as string,
+                  }}
+                />
+              </ul>
+            ))}
+          </div>
+        ) : (
+          <p className='text-center text-darker/50'>هیچ محصولی یافت نشد.</p>
+        )}
+
+        {/* Load More */}
+        {canLoadMore && (
+          <button
+            onClick={() => setPage((x) => x + 1)}
+            className='block mx-auto mt-6 px-4 py-2 bg-tusi text-lighter rounded'>
+            بارگذاری بیشتر
+          </button>
+        )}
+      </div>
+    </Suspense>
   );
 }
