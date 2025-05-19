@@ -108,7 +108,7 @@ export default function SearchPage() {
   };
 
   return (
-    <Suspense fallback={"loading"}>
+    <Suspense>
       <div className='min-h-screen bg-lighter py-10 px-4 md:px-14 lg:px-48 mt-10'>
         {/* Search Input */}
         <div className='flex sm:flex-row flex-col items-center justify-center gap-2 mb-6'>
