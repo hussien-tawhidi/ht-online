@@ -1,12 +1,5 @@
 import React, { Suspense } from "react";
-import dynamic from "next/dynamic";
-
-const SearchPageClient = dynamic(
-  () => import("../../components/header/search/SearchPage"),
-  {
-    ssr: false,
-  }
-);
+import SearchPageClient from "../../components/header/search/SearchPage";
 
 export default function SearchUserPage() {
   return (
