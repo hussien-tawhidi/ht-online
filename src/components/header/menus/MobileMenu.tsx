@@ -43,27 +43,23 @@ export default function MobileMenu() {
           {/* Logo */}
           <motion.li
             className='flex items-center gap-2 text-2xl'
-            onClick={() => router.push("/")}
             whileHover={{ scale: 1.1 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ ...spring, duration: 0.5, delay: 0.1 }}>
             <Image
+              onClick={() => router.push("/")}
               width={30}
               height={30}
               className='object-cover w-8 h-auto'
               alt='logo ht-online'
               src={"/logo.png"}
             />
-            <motion.span
+            <motion.p
               className='text-xl font-thin flex items-center cursor-pointer transition-all hover:text-tusi'
-              whileHover={{ scale: 1.2 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              onClick={() => router.push("/login")}
               transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
               <UserMenu />
-            </motion.span>
+            </motion.p>
             {/* Search Icon */}
           </motion.li>
 
