@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { header } from "../data";
-import { CiSearch, CiShoppingCart, CiUser } from "react-icons/ci";
+import { CiSearch, CiShoppingCart } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -11,7 +11,7 @@ import Link from "next/link";
 import CartDropdown from "@/components/cart/CartDropdown";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
-import { useSession } from "next-auth/react";
+import UserMenu from "./UserMenu";
 
 const spring = {
   type: "spring",
@@ -26,8 +26,6 @@ export default function DesktopMenu() {
   const [showCartItems, setShowCartItems] = useState(false);
   const cartItem = useSelector((state: RootState) => state.cart.items);
   const [mounted, setMounted] = useState(false);
-
-  const { data: session } = useSession();
 
   useEffect(() => {
     setMounted(true);
@@ -174,24 +172,8 @@ export default function DesktopMenu() {
             {/* Cart Icon */}
             <CiShoppingCart />
           </motion.li>
-          <motion.li
-            className='text-xl font-thin cursor-pointer transition-all hover:text-tusi'
-            whileHover={{ scale: 1.2 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
-            {session ? (
-              <Image
-                src={session.user?.image || "/placeholder.png"}
-                width={100}
-                height={100}
-                alt={`${session.user?.name} عکس برای`} className="rounded-full w-8"
-              />
-            ) : (
-              <Link href={"/login"}>
-                <CiUser />
-              </Link>
-            )}
+          <motion.li>
+            <UserMenu />
           </motion.li>
         </div>
       </ul>

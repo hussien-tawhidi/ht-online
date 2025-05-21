@@ -10,7 +10,7 @@ import TrendingProducts from "@/components/home/TrendingProducts";
 
 export default function Home() {
   return (
-    <main>
+    <main className="">
       <Hero />
       <Features />
       <TrendingProducts />

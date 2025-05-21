@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CiSearch, CiShoppingCart, CiUser } from "react-icons/ci";
+import { CiSearch, CiShoppingCart } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import CloseBurgerMenu from "./CloseBurgerMenu";
 import CartDropdown from "@/components/cart/CartDropdown";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import UserMenu from "./UserMenu";
 
 const spring = {
   type: "spring",
@@ -32,7 +33,7 @@ export default function MobileMenu() {
   }, []);
 
   return (
-    <div className='bg-lighter w-full'>
+    <div className='bg-lighter relative w-full'>
       <motion.div
         className='flex items-center h-[7vh] w-[90%] mx-auto '
         initial={{ opacity: 0, y: -20 }}
@@ -54,17 +55,16 @@ export default function MobileMenu() {
               alt='logo ht-online'
               src={"/logo.png"}
             />
-
-            {/* Search Icon */}
             <motion.span
-              onClick={() => setSearch(!search)}
-              className='cursor-pointer transition-all hover:text-tusi'
+              className='text-xl font-thin flex items-center cursor-pointer transition-all hover:text-tusi'
               whileHover={{ scale: 1.2 }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ ...spring, duration: 0.5, delay: 0.4 }}>
-              <CiSearch />
+              onClick={() => router.push("/login")}
+              transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
+              <UserMenu />
             </motion.span>
+            {/* Search Icon */}
           </motion.li>
 
           {/* Animated Mobile Menu Items */}
@@ -78,15 +78,14 @@ export default function MobileMenu() {
           {/* Right Icons */}
           <li className='flex items-center gap-5 text-2xl relative z-20'>
             <motion.span
-              className='text-xl font-thin cursor-pointer transition-all hover:text-tusi'
+              onClick={() => setSearch(!search)}
+              className='cursor-pointer transition-all hover:text-tusi'
               whileHover={{ scale: 1.2 }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              onClick={() => router.push("/login")}
-              transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
-              <CiUser />
+              transition={{ ...spring, duration: 0.5, delay: 0.4 }}>
+              <CiSearch />
             </motion.span>
-
             {/* Cart Icon */}
             <motion.span
               className='font-thin cursor-pointer relative transition-all hover:text-tusi'
