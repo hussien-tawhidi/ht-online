@@ -277,7 +277,7 @@ export const header = [
 ];
 
 export const userLinks = [
-  { title: "پروفایل من", icon: FiUser, href: "/profile" },
+  { title: "پروفایل من", icon: FiUser, href: "" },
   { title: "پسندیده‌ها", icon: FiHeart, href: "/favorites" },
   { title: "سفارش‌ها", icon: FiShoppingBag, href: "/orders" },
   { title: "آدرس‌ها", icon: FiMapPin, href: "/addresses" },

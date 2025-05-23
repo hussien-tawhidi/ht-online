@@ -1,0 +1,270 @@
+import { BsMinecart } from "react-icons/bs";
+import { MdOutlineNotificationsActive } from "react-icons/md";
+import { RiRefund2Line } from "react-icons/ri";
+import {
+  CiHeart,
+  CiBoxList,
+  CiLocationOn,
+  CiSettings,
+  CiLogout,
+  CiShop,
+} from "react-icons/ci";
+
+export const userLinkMenu = [
+  { title: "سفارش‌های من", icon: CiBoxList, link: "/orders" },
+  { title: "علاقه‌مندی‌ها", icon: CiHeart, link: "/wishlist" },
+  { title: "آدرس‌ها", icon: CiLocationOn, link: "/addresses" },
+  { title: "درخواست‌های بازگشت", icon: RiRefund2Line, link: "/refunds" },
+  {
+    title: "اعلان‌ها",
+    icon: MdOutlineNotificationsActive,
+    link: "/notifications",
+  },
+  { title: "تنظیمات", icon: CiSettings, link: "/settings" },
+  { title: "خروج", icon: CiLogout, link: "/logout" },
+];
+
+export const userProfileQuickLink = [
+  { title: "رفتن به سبد خرید", icon: BsMinecart, link: "/cart" },
+  { title: "رفتن به فروشگاه", icon: CiShop, link: "/" },
+];
+
+export const numbers = [
+  {
+    title: "کیف پول",
+    image: "/userMenu/bag.png",
+    link: "/",
+    numb: "۳۰,۰۰۰ تومان",
+    linkTitle: "افزایش صورت حساب",
+    className: "bg-[#90caf9] border-l-4 border-[#2196f3]",
+  },
+  {
+    title: "سفارشات ارسال شده",
+    image: "/userMenu/shipped.png",
+    link: "/",
+    numb: 30,
+    linkTitle: "همه سفارشات ارسال شده",
+    className: "bg-[#fecf9a] border-l-4 border-[#fdb667]", // blue-50 to sky-100, border sky-400
+  },
+  {
+    title: "سفارشات در حال پردازش",
+    image: "/userMenu/baslet.png",
+    link: "/",
+    numb: 30,
+    linkTitle: "سفاشات در حال پردازش",
+    className: "bg-[#667090] text-lighter border-l-4 border-[#4d587e]", // green-50 to emerald-100, border emerald-400
+  },
+];
+export const mockOrders = [
+  {
+    id: "ORD123456",
+    date: "1403/02/01",
+    status: "delivered",
+    total: "۱,۲۰۰,۰۰۰ تومان",
+    items: 3,
+  },
+  {
+    id: "ORD123457",
+    date: "1403/02/03",
+    status: "pending",
+    total: "۸۰۰,۰۰۰ تومان",
+    items: 2,
+  },
+  {
+    id: "ORD123458",
+    date: "1403/02/04",
+    status: "canceled",
+    total: "۰ تومان",
+    items: 1,
+  },
+  {
+    id: "ORD123459",
+    date: "1403/02/05",
+    status: "delivered",
+    total: "۱,۵۰۰,۰۰۰ تومان",
+    items: 5,
+  },
+  {
+    id: "ORD123460",
+    date: "1403/02/06",
+    status: "pending",
+    total: "۷۰۰,۰۰۰ تومان",
+    items: 2,
+  },
+  {
+    id: "ORD123461",
+    date: "1403/02/07",
+    status: "delivered",
+    total: "۲,۲۰۰,۰۰۰ تومان",
+    items: 4,
+  },
+  {
+    id: "ORD123462",
+    date: "1403/02/08",
+    status: "delivered",
+    total: "۹۰۰,۰۰۰ تومان",
+    items: 1,
+  },
+  {
+    id: "ORD123463",
+    date: "1403/02/09",
+    status: "canceled",
+    total: "۰ تومان",
+    items: 3,
+  },
+  {
+    id: "ORD123464",
+    date: "1403/02/10",
+    status: "pending",
+    total: "۱,۰۰۰,۰۰۰ تومان",
+    items: 3,
+  },
+  {
+    id: "ORD123465",
+    date: "1403/02/11",
+    status: "delivered",
+    total: "۱,۳۰۰,۰۰۰ تومان",
+    items: 2,
+  },
+  {
+    id: "ORD123466",
+    date: "1403/02/12",
+    status: "delivered",
+    total: "۱,۸۰۰,۰۰۰ تومان",
+    items: 6,
+  },
+  {
+    id: "ORD123467",
+    date: "1403/02/13",
+    status: "pending",
+    total: "۵۰۰,۰۰۰ تومان",
+    items: 1,
+  },
+  {
+    id: "ORD123468",
+    date: "1403/02/14",
+    status: "delivered",
+    total: "۲,۵۰۰,۰۰۰ تومان",
+    items: 7,
+  },
+  {
+    id: "ORD123469",
+    date: "1403/02/15",
+    status: "canceled",
+    total: "۰ تومان",
+    items: 1,
+  },
+  {
+    id: "ORD123470",
+    date: "1403/02/16",
+    status: "delivered",
+    total: "۱,۰۰۰,۰۰۰ تومان",
+    items: 2,
+  },
+  {
+    id: "ORD123471",
+    date: "1403/02/17",
+    status: "pending",
+    total: "۹۰۰,۰۰۰ تومان",
+    items: 3,
+  },
+  {
+    id: "ORD123472",
+    date: "1403/02/18",
+    status: "delivered",
+    total: "۱,۷۰۰,۰۰۰ تومان",
+    items: 4,
+  },
+  {
+    id: "ORD123473",
+    date: "1403/02/19",
+    status: "pending",
+    total: "۶۰۰,۰۰۰ تومان",
+    items: 2,
+  },
+  {
+    id: "ORD123474",
+    date: "1403/02/20",
+    status: "delivered",
+    total: "۲,۲۰۰,۰۰۰ تومان",
+    items: 5,
+  },
+  {
+    id: "ORD123475",
+    date: "1403/02/21",
+    status: "canceled",
+    total: "۰ تومان",
+    items: 1,
+  },
+  {
+    id: "ORD123476",
+    date: "1403/02/22",
+    status: "delivered",
+    total: "۱,۴۰۰,۰۰۰ تومان",
+    items: 3,
+  },
+  {
+    id: "ORD123477",
+    date: "1403/02/23",
+    status: "pending",
+    total: "۷۰۰,۰۰۰ تومان",
+    items: 2,
+  },
+  {
+    id: "ORD123478",
+    date: "1403/02/24",
+    status: "delivered",
+    total: "۱,۶۰۰,۰۰۰ تومان",
+    items: 4,
+  },
+  {
+    id: "ORD123479",
+    date: "1403/02/25",
+    status: "pending",
+    total: "۸۵۰,۰۰۰ تومان",
+    items: 1,
+  },
+  {
+    id: "ORD123480",
+    date: "1403/02/26",
+    status: "delivered",
+    total: "۲,۰۰۰,۰۰۰ تومان",
+    items: 5,
+  },
+  {
+    id: "ORD123481",
+    date: "1403/02/27",
+    status: "delivered",
+    total: "۱,۱۰۰,۰۰۰ تومان",
+    items: 2,
+  },
+  {
+    id: "ORD123482",
+    date: "1403/02/28",
+    status: "canceled",
+    total: "۰ تومان",
+    items: 1,
+  },
+  {
+    id: "ORD123483",
+    date: "1403/03/01",
+    status: "pending",
+    total: "۹۵۰,۰۰۰ تومان",
+    items: 3,
+  },
+  {
+    id: "ORD123484",
+    date: "1403/03/02",
+    status: "delivered",
+    total: "۱,۳۵۰,۰۰۰ تومان",
+    items: 4,
+  },
+  {
+    id: "ORD123485",
+    date: "1403/03/03",
+    status: "pending",
+    total: "۷۵۰,۰۰۰ تومان",
+    items: 2,
+  },
+];
+  

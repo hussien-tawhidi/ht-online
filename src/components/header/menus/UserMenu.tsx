@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CiUser } from "react-icons/ci";
 import { FiLogOut } from "react-icons/fi";
 import { userLinks } from "../data";
+import LoyaltyPoints from "./LoyaltyPoints";
+import { RiArrowDropDownFill } from "react-icons/ri";
 
 export default function UserMenu() {
   const { data: session, status } = useSession();
@@ -41,14 +43,31 @@ export default function UserMenu() {
     <div className='md:relative text-right'>
       <button
         onClick={toggleMenu}
-        className='focus:outline-none flex items-center'>
+        className='focus:outline-none flex items-center cursor-pointer '>
+        <motion.div
+          animate={{ rotate: userMenu ? 180 : 0 }}
+          initial={false}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 20,
+            duration: userMenu ? 0.4 : 0.5,
+            delay: userMenu ? 0 : 0.15,
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className={`self-end -ml-2 -mb-2 text-xl transition-colors duration-300 ${
+            userMenu ? "text-tusi" : "text-darker/60"
+          }`}>
+          <RiArrowDropDownFill />
+        </motion.div>
         <Image
           src={session.user?.image || "/placeholder.png"}
           width={32}
           height={32}
           alt={`${session.user?.name} عکس برای`}
           className='rounded-full w-8 h-8 object-cover'
-        />
+        />{" "}
       </button>
 
       <AnimatePresence>
@@ -61,7 +80,7 @@ export default function UserMenu() {
             className='absolute left-0 mt-2 md:w-80 md:right-auto md:h-auto right-0 w-[98%] mx-auto bg-lighter rounded-xl shadow-lg z-50 md:p-4 p-2 text-sm'
             dir='rtl'>
             {/* User Info */}
-            <div className='flex items-center flex-row-reverse justify-start gap-3 border-b pb-4 border-darker/20'>
+            <div className='flex items-center flex-row-reverse justify-start gap-3 pb-4'>
               <Image
                 src={session.user?.image || "/placeholder.png"}
                 alt='User'
@@ -80,48 +99,12 @@ export default function UserMenu() {
             </div>
 
             {/* Loyalty Points */}
-            <div className='bg-yellow-50 dark:bg-yellow-900 rounded-md border border-yellow-300 dark:border-yellow-700 p-3'>
-              <p className='text-sm font-semibold text-yellow-800 dark:text-yellow-200 mb-1'>
-                امتیازهای وفاداری شما
-              </p>
-              <p className='text-xs text-yellow-700 dark:text-yellow-300 mb-3'>
-                شما{" "}
-                <span className='font-bold text-yellow-900 dark:text-yellow-100'>
-                  {currentPoints}
-                </span>{" "}
-                امتیاز دارید
-              </p>
-              <div className='w-full bg-yellow-200 dark:bg-yellow-800 rounded-full h-2 overflow-hidden'>
-                <motion.div
-                  className='bg-yellow-500 dark:bg-yellow-400 h-2 rounded-full'
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.7, ease: "easeInOut" }}
-                />
-              </div>
-              <p className='mt-1 text-xs text-yellow-700 dark:text-yellow-300'>
-                {nextTierPoints - currentPoints} امتیاز تا پاداش بعدی!
-              </p>
-
-              {/* Reward Tiers */}
-              <div className='mt-5 flex items-center justify-between text-xs'>
-                {rewardTiers.map((tier, idx) => {
-                  const isActive = currentPoints >= tier.min;
-                  return (
-                    <div
-                      key={idx}
-                      className={`flex flex-col items-center ${
-                        isActive
-                          ? "text-yellow-900 dark:text-yellow-100 font-bold"
-                          : "text-gray-400"
-                      }`}>
-                      <span className='text-lg'>{tier.icon}</span>
-                      <span>{tier.label}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+            <LoyaltyPoints
+              currentPoints={currentPoints}
+              nextTierPoints={nextTierPoints}
+              progress={progress}
+              rewardTiers={rewardTiers}
+            />
 
             {/* Menu Links */}
             <nav className='flex flex-col gap-4 text-darker/70 text-sm mt-3'>
@@ -129,6 +112,7 @@ export default function UserMenu() {
                 <Link
                   key={i}
                   href={`/user/${session.user?.name}/${l.href}`}
+                  onClick={toggleMenu}
                   className='flex items-center sm:gap-4 hover:text-darker justify-end font-thin gap-2'>
                   {l.title} {l.icon && <l.icon />}
                 </Link>

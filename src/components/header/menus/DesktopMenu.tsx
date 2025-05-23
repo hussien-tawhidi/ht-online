@@ -174,6 +174,7 @@ export default function DesktopMenu() {
           </motion.li>
           <motion.li>
             <UserMenu />
+            
           </motion.li>
         </div>
       </ul>

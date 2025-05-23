@@ -55,11 +55,11 @@ export default function MobileMenu() {
               alt='logo ht-online'
               src={"/logo.png"}
             />
-            <motion.p
+            <motion.div
               className='text-xl font-thin flex items-center cursor-pointer transition-all hover:text-tusi'
               transition={{ ...spring, duration: 0.5, delay: 0.5 }}>
               <UserMenu />
-            </motion.p>
+            </motion.div>
             {/* Search Icon */}
           </motion.li>
 
