@@ -71,7 +71,7 @@ export default function Review() {
       {loading ? (
         <p className='text-center'>در حال بارگذاری...</p>
       ) : error ? (
-        <p className='text-center text-red-600 font-semibold'>{error}</p>
+        <p className='text-center text-[#8b0000] font-semibold'>{error}</p>
       ) : paginated.length === 0 ? (
         <p className='text-center italic text-darker/50'>هیچ نظری یافت نشد.</p>
       ) : (

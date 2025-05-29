@@ -41,32 +41,32 @@ export const ReviewFilters: React.FC<FiltersProps> = ({
           {
             label: "همه",
             value: 0,
-            icon: <FaStar className='text-gray-400' />,
+            icon: <FaStar className='text-darker/30' />,
           },
           {
             label: "۱ ستاره +",
             value: 1,
-            icon: <FaStar className='text-yellow-400' />,
+            icon: <FaStar className='text-[#da7f25]' />,
           },
           {
             label: "۲ ستاره +",
             value: 2,
-            icon: <FaStar className='text-yellow-400' />,
+            icon: <FaStar className='text-[#da7f25]' />,
           },
           {
             label: "۳ ستاره +",
             value: 3,
-            icon: <FaStar className='text-yellow-400' />,
+            icon: <FaStar className='text-[#da7f25]' />,
           },
           {
             label: "۴ ستاره +",
             value: 4,
-            icon: <FaStar className='text-yellow-400' />,
+            icon: <FaStar className='text-[#da7f25]' />,
           },
           {
             label: "۵ ستاره",
             value: 5,
-            icon: <FaStar className='text-yellow-400' />,
+            icon: <FaStar className='text-[#da7f25]' />,
           },
         ]}
       />

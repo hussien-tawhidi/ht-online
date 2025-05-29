@@ -46,7 +46,7 @@ export function CustomSelect<T extends string | number>({
       )}
       <button
         onClick={() => setOpen((prev) => !prev)}
-        className='w-full flex justify-between items-center border border-gray-300 rounded px-3 py-2 bg-white shadow-sm hover:border-gray-400 transition text-sm'>
+        className='w-full flex justify-between items-center border border-darker/20 rounded px-3 py-2 bg-lighter shadow-sm hover:border-darker/30 transition text-sm'>
         <div className='flex items-center gap-2 truncate'>
           {selected?.icon && <span>{selected.icon}</span>}
           <span>{selected?.label}</span>
@@ -65,7 +65,7 @@ export function CustomSelect<T extends string | number>({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className='absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded shadow-lg text-sm max-h-64 overflow-auto'>
+            className='absolute z-10 mt-1 w-full bg-lighter border border-darker/20 rounded shadow-lg text-sm max-h-64 overflow-auto'>
             {options.map((opt) => (
               <motion.li
                 key={`${opt.value}`}
@@ -73,8 +73,8 @@ export function CustomSelect<T extends string | number>({
                   onChange(opt.value);
                   setOpen(false);
                 }}
-                className={`px-3 py-2 cursor-pointer flex items-center gap-2 hover:bg-gray-100 ${
-                  opt.value === value ? "bg-gray-100 font-medium" : ""
+                className={`px-3 py-2 cursor-pointer flex items-center gap-2 hover:bg-darker/5 ${
+                  opt.value === value ? "bg-darker/5 font-medium" : ""
                 }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}>
