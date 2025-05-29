@@ -4,6 +4,7 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { IoCallOutline } from "react-icons/io5";
 import { LuClock } from "react-icons/lu";
 import { MdOutlineAttachMoney } from "react-icons/md";
+import { BlogType } from "./AnimatedBlogCard";
 
 export const cate = [
   {
@@ -148,45 +149,45 @@ export const features = [
   },
 ];
 
-export const blogs = [
+export const blogs: BlogType[] = [
   {
-    id: 1,
+    id: "1",
     title: "۵ نکته برای انتخاب کیف روزمره مناسب",
     description: "راهنمای خرید کیف زنانه‌ای که هم کاربردی باشد و هم زیبا.",
     image: "/menu/categories/bag.png",
   },
   {
-    id: 2,
+    id: "2",
     title: "راهنمای ست کردن کفش با استایل روزانه",
     description: "بهترین مدل‌های کفش برای استفاده‌ی روزمره با استایل متفاوت.",
     image: "/menu/categories/shoes.png",
   },
   {
-    id: 3,
+    id: "3",
     title: "جدیدترین اکسسوری‌های زنانه ۲۰۲۵",
     description: "با ترندهای اکسسوری سال جدید آشنا شوید و بدرخشید!",
     image: "/menu/categories/glasses.png",
   },
   {
-    id: 4,
+    id: "4",
     title: "چطور یک کیف پول شیک انتخاب کنیم؟",
     description: "نکاتی برای انتخاب کیف پولی که هم خاص باشد و هم بادوام.",
     image: "/menu/categories/glasses.png",
   },
   {
-    id: 5,
+    id: "5",
     title: "۵ مدل کوله‌پشتی محبوب برای استایل خیابانی",
     description: "ترکیب راحتی و استایل در انتخاب کوله مناسب برای خانم‌ها.",
     image: "/menu/categories/bag.png",
   },
   {
-    id: 6,
+    id: "6",
     title: "آشنایی با عینک‌های آفتابی ترند امسال",
     description: "محافظت از چشمانتان با استایلی جذاب و متفاوت.",
     image: "/menu/categories/sunglasses-trend.jpg",
   },
   {
-    id: 7,
+    id: "7",
     title: "کتونی سفید؛ انتخابی برای هر موقعیت",
     description: "چرا هر خانمی باید حداقل یک کتونی سفید داشته باشد؟",
     image: "/menu/categories/bag.png",
