@@ -5,7 +5,6 @@ import {
   FiMapPin,
   FiMessageCircle,
   FiGift,
-  FiTrendingUp,
 } from "react-icons/fi";
 export const header = [
   {
@@ -278,12 +277,11 @@ export const header = [
 
 export const userLinks = [
   { title: "پروفایل من", icon: FiUser, href: "" },
-  { title: "پسندیده‌ها", icon: FiHeart, href: "/favorites" },
+  { title: "پسندیده‌ها", icon: FiHeart, href: "/wishlist" },
   { title: "سفارش‌ها", icon: FiShoppingBag, href: "/orders" },
   { title: "آدرس‌ها", icon: FiMapPin, href: "/addresses" },
   { title: "کدهای تخفیف", icon: FiGift, href: "/coupons" },
   { title: "نظرات من", icon: FiMessageCircle, href: "/reviews" },
-  { title: "پیشنهاد ویژه", icon: FiTrendingUp, href: "/deals" },
 ];
 
 export const suggestions = [

@@ -107,14 +107,14 @@ export default function UserMenu() {
             />
 
             {/* Menu Links */}
-            <nav className='flex flex-col gap-4 text-darker/70 text-sm mt-3'>
+            <nav className='flex flex-col items-end gap-4 text-darker/70 text-sm mt-3'>
               {userLinks.map((l, i) => (
                 <Link
                   key={i}
                   href={`/user/${session.user?.name}/${l.href}`}
                   onClick={toggleMenu}
-                  className='flex items-center sm:gap-4 hover:text-darker justify-end font-thin gap-2'>
-                  {l.title} {l.icon && <l.icon />}
+                  className='flex items-center sm:gap-4 hover:text-darker justify-sta w-full font-thin gap-2'>
+                  {l.icon && <l.icon />} {l.title}
                 </Link>
               ))}
             </nav>

@@ -12,7 +12,7 @@ export interface CartItem {
 
 interface CartState {
   items: CartItem[];
-  favorites: CartItem[];
+  favorites: CartItem[]; // Using CartItem here, so favorites require quantity and color as well
 }
 
 const initialState: CartState = {
@@ -30,10 +30,10 @@ const cartSlice = createSlice({
       );
       if (existingItem) {
         existingItem.quantity += action.payload.quantity;
-        alert("This product has been added and ++");
+        alert("This product quantity increased in cart.");
       } else {
         state.items.push(action.payload);
-        alert("Added to your cart successfully");
+        alert("Added to your cart successfully.");
       }
     },
     removeFromCart: (state, action: PayloadAction<string>) => {
@@ -64,13 +64,21 @@ const cartSlice = createSlice({
       state.items = [];
       alert("Your cart has been cleared.");
     },
+
+    // Fix: remove from favorites should filter from favorites, not items
+    removeFromFavorites: (state, action: PayloadAction<string>) => {
+      state.favorites = state.favorites.filter(
+        (item) => item._id !== action.payload
+      );
+    },
+
+    // Toggle favorite: add if not exists, remove if exists
     addToFavorites: (state, action: PayloadAction<CartItem>) => {
-      const existingItemIndex = state.favorites.findIndex(
+      const existingIndex = state.favorites.findIndex(
         (item) => item._id === action.payload._id
       );
-
-      if (existingItemIndex >= 0) {
-        state.favorites.splice(existingItemIndex, 1);
+      if (existingIndex >= 0) {
+        state.favorites.splice(existingIndex, 1);
         alert("Removed from your favorites!");
       } else {
         state.favorites.push(action.payload);
@@ -88,6 +96,7 @@ export const {
   decreaseQty,
   clearCart,
   addToFavorites,
+  removeFromFavorites,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -31,7 +31,12 @@ export default function ProductInfo({ product, variants }: ImageGalleryProps) {
 
         <p className='text-darker/50'>{product.description}</p>
 
-        <ProductPrice price={product.price} />
+        <ProductPrice
+          price={product.price}
+          id={product._id}
+          image={product.images}
+          name={product.name}
+        />
 
         <ColorChoosed
           variants={variants}
