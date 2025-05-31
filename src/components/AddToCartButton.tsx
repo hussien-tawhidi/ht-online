@@ -2,7 +2,7 @@ import { addToCart } from "@/store/slice/cartSlice";
 import { IconType } from "react-icons/lib";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
-import { useEffect, useState } from "react";
+import { useToast } from "./taost/ToastContext";
 
 interface AddToCartButtonProps {
   _id: string;
@@ -26,13 +26,15 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   color,
   price,
   discountPrice,
-  className,
+  className = "",
   text,
 }) => {
-  const [mounted, setMounted] = useState(false);
   const dispatch = useDispatch();
-  const cartItem = useSelector((state: RootState) => state.cart.items);
-  const existItem = cartItem.find((item) => item._id === _id);
+  const { addToast } = useToast();
+
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const existItem = cartItems.find((item) => item._id === _id);
+
   const handleAddToCart = () => {
     dispatch(
       addToCart({
@@ -45,26 +47,15 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
         discountPrice,
       })
     );
+    addToast(`<strong>${name}</strong> به سبد خرید اضافه شد`, "success");
   };
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return <div className='w-24 h-8' />; // reserve space if needed
-  }
-
-  // only render once mounted
-  if (existItem) {
-    return null;
-  }
 
   return (
     <div className={existItem ? "hidden" : "block"}>
       <button
         disabled={color.length === 0}
         type={type}
-        className={`group relative flex gap-1.5 items-center text-tusi transition${className}`}
+        className={`group relative flex gap-1.5 items-center text-tusi transition ${className}`}
         onClick={handleAddToCart}>
         {Icon && <Icon />}
         {text}

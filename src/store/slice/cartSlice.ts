@@ -30,10 +30,10 @@ const cartSlice = createSlice({
       );
       if (existingItem) {
         existingItem.quantity += action.payload.quantity;
-        alert("This product quantity increased in cart.");
+        // alert("This product quantity increased in cart.");
       } else {
         state.items.push(action.payload);
-        alert("Added to your cart successfully.");
+        // alert("Added to your cart successfully.");
       }
     },
     removeFromCart: (state, action: PayloadAction<string>) => {
@@ -62,7 +62,7 @@ const cartSlice = createSlice({
     },
     clearCart: (state) => {
       state.items = [];
-      alert("Your cart has been cleared.");
+      // alert("Your cart has been cleared.");
     },
 
     // Fix: remove from favorites should filter from favorites, not items
@@ -79,10 +79,10 @@ const cartSlice = createSlice({
       );
       if (existingIndex >= 0) {
         state.favorites.splice(existingIndex, 1);
-        alert("Removed from your favorites!");
+        // alert("Removed from your favorites!");
       } else {
         state.favorites.push(action.payload);
-        alert("Added to your favorites!");
+        // alert("Added to your favorites!");
       }
     },
   },

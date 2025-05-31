@@ -20,6 +20,7 @@ export default function ProductPrice({
   image,
 }: ProductPriceProps) {
   const dispatch = useDispatch<AppDispatch>();
+  
   const favorites = useSelector((state: RootState) => state.cart.favorites);
   const [isFavorite, setIsFavorite] = useState(false);
 
